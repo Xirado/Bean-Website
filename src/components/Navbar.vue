@@ -9,7 +9,7 @@
         <v-btn v-if="!isSmall" text href="https://discord.gg/7WEjttJtKa" target="_blank" >
             <span>Support-Server</span>
         </v-btn>
-        <v-btn v-if="!isSmall" text href="https://github.com/Xirado/beanbot" target="_blank">
+        <v-btn v-if="!isSmall" text href="https://github.com/Xirado/Bean" target="_blank">
             <span>Github</span>
         </v-btn>
         <v-btn v-if="!isSmall" text :href='invite_link' target="_blank">
@@ -29,7 +29,7 @@
                   <span>Support-Server</span>
                 </v-btn>
                 <v-spacer></v-spacer>
-              <v-btn text color="white" href="https://github.com/Xirado/beanbot" target="_blank">
+              <v-btn text color="white" href="https://github.com/Xirado/Bean" target="_blank">
                   <span>Github</span>
               </v-btn>
               <v-spacer></v-spacer>
