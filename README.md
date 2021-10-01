@@ -1,4 +1,4 @@
-# beandashboard
+# Bean Website
 
 ## Project setup
 ```

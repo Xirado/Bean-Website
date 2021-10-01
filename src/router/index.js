@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
+const Home = () => import('@/views/Home')
+const Dashboard = () => import('@/views/Dashboard')
+const Documentation = () => import('@/views/Documentation')
+const DiscordOauth = () => import('@/views/DiscordOauth')
+const GuildView = () => import('@/views/GuildView')
+const Error404 = () => import('@/views/Error404')
 
 Vue.use(VueRouter)
 
@@ -11,12 +17,29 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
+  },
+  {
+    path: '/documentation',
+    name: 'Documentation',
+    component: Documentation
+  },
+  {
+    path: '/auth/discord',
+    name: 'DiscordOauth2',
+    component: DiscordOauth
+  },
+  {
+    path: '/guild',
+    name: 'Guild',
+    component: GuildView
+  },
+  {
+    path: '*',
+    name: 'Error404',
+    component: Error404
   }
 ]
 
