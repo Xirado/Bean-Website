@@ -11,16 +11,24 @@
 
 <script>
 import Navbar from '@/components/Navbar'
-
+import { logout } from '@/api/api.js'
 export default {
   name: 'App',
-  components: { Navbar }
-};
+  components: { Navbar },
+  created() {
+    if (localStorage.getItem('token') && localStorage.getItem('last_login')) {
+      if (Date.now()/1000 > Number.parseInt(localStorage.getItem('last_login'))+259200)
+        logout()
+    } else {
+      logout()
+    }
+  }
+}
 </script>
 
 <style>
 #app {
-  background-color: #000;
+  background-color: #222;
 }
 .fade-enter-active, .fade-leave-active {
   transition-property: opacity;

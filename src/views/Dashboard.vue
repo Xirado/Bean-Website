@@ -7,7 +7,7 @@
         elevation="2"
         transition="scale-transition"
         >
-            Please login to see mutual guilds!
+            Please log in to see your guilds!
         </v-alert>
         <v-alert
         :value="error && loggedIn"
@@ -26,42 +26,29 @@
         elevation="2"
         transition="scale-transition"
         >
-            I am not in any server in which you have Administrator permissions!
+            You are not Administrator on any server you are in!
         </v-alert>
-        <v-container v-if="!error && !loading && loggedIn && Object.keys(guilds).length > 0">
-            <v-row align="stretch" >
-                <v-col v-for="guild in guilds" v-bind:key="guild.id">
-                    <v-card class="mx-auto my-3" max-width="200">
-                            <v-avatar tile size="200" color="indigo darken-2">
-                                <img v-if="guild.icon" :src="guild.icon">
-                                <span v-if="!guild.icon" class="white--text text-h3"> {{ guild.initials }}</span>
-                            </v-avatar>
-                        <v-card-text style="overflow-y: auto; height:80px">{{ truncate(guild.name) }}</v-card-text>
-                        <v-divider class="mx-4"></v-divider>
-                        <v-card-actions class="justify-center">
-                            <v-btn color="deep-purple lighten-2" text @click="open(guild.id)">
-                                Open Dashboard
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-col>
-            </v-row> 
-        </v-container>
+        <v-card class="mx-auto" v-if="!error && !loading && loggedIn && Object.keys(guilds).length > 0">
+            <GuildList :guilds="guilds" :baseInviteUrl="base_invite_url"/>
+        </v-card>
     </div>
 </template>
 
 
 <script>
 import EventBus from '@/events/event-bus.js'
-import { getToken, backend_url } from '@/discord/discord.js'
+import { backend_url, logout } from '@/api/api.js'
 import axios from 'axios'
+import GuildList from '../components/GuildList.vue'
 export default {
     name: 'Dashboard',
+    components: { GuildList },
     data() {
         return {
             loggedIn: false,
             loading: true,
             guilds: null,
+            base_invite_url: null,
             error: false,
             error_message: "An unknown error occurred",
         }
@@ -71,21 +58,19 @@ export default {
         EventBus.$on('LoginEvent', (value) => {
             this.loggedIn = value
         })
-        if (localStorage.getItem("code") != null) {
+        if (localStorage.getItem("token") != null) {
             try {
+                this.loggedIn = true
                 this.loading = true
-                const tokens = await getToken()
-                if (!tokens)
+                const token = localStorage.getItem('token')
+                if (!token)
                 {
                     this.loading = false
                     this.error = true
                 }
-                EventBus.$emit('LoginEvent', true)
                 const config = {
                     headers: {
-                        access_token: tokens.access_token,
-                        refresh_token: tokens.refresh_token,
-                        expires_on: tokens.expires
+                        authorization: `Token ${token}`
                     }
                 }
                 const response = await axios.get(`${backend_url}/guilds`, config)
@@ -103,10 +88,16 @@ export default {
                     return
                 }
                 this.guilds = response.data.guilds
+                this.base_invite_url = response.data.base_invite_url
                 this.loading = false
             } catch(error) {
                 this.error = true
                 if (error.response) {
+                    if (error.response.status == 401) {
+                        logout()
+                        this.loading = false
+                        return
+                    }
                     this.error_message = `Backend returned error ${error.response.status}: ${error.response.data.message}!`
                 } else {
                     this.error_message = 'An unknown error occurred!'
@@ -121,21 +112,7 @@ export default {
         }
         
 
-    },
-    methods: {
-        open(id) {
-            this.$router.push(`guild?id=${id}`)
-        },
-        truncate(name)
-        {
-            let string = String(name)
-            if (string.length > 41)
-            {
-                return string.substring(0,41)+"..."
-            }
-            return string
-        }
-  }
+    }
 }
 </script>
 

@@ -7,7 +7,8 @@ const Documentation = () => import('@/views/Documentation')
 const DiscordOauth = () => import('@/views/DiscordOauth')
 const GuildView = () => import('@/views/GuildView')
 const Error404 = () => import('@/views/Error404')
-
+const Commands = () => import('@/views/Commands')
+const Leaderboard = () => import('@/views/Leaderboard')
 Vue.use(VueRouter)
 
 const routes = [
@@ -35,6 +36,16 @@ const routes = [
     path: '/guild',
     name: 'Guild',
     component: GuildView
+  },
+  {
+    path: '/commands',
+    name: 'Commands',
+    component: Commands
+  },
+  {
+    path: '/leaderboard',
+    name: 'Leaderboard',
+    component: Leaderboard
   },
   {
     path: '*',

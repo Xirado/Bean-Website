@@ -71,9 +71,24 @@
                                     </v-autocomplete>
                                 </v-col>
                             </v-row>
+                            <v-row align="center" class="d-flex justify-start" no-gutters>
+                                <v-col cols="4" class="flex-grow-0 flex-shrink-0">
+                                    <span class="grey--text darken-2">Allow volume above 100%</span>
+                                </v-col>
+                                <v-col cols="2">
+                                    <v-switch
+                                        v-model="allow_earrape"
+                                    
+                                    >
+
+                                    </v-switch>
+                                </v-col>
+                            </v-row>
                         </v-container>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
+                
+                
             </v-expansion-panels>
             <v-divider class="my-4"></v-divider>
             <v-btn class="mx-2"
@@ -92,7 +107,7 @@ import axios from 'axios'
 var json_bigint = require('json-bigint')
 var _ = require('lodash')
 
-import { backend_url, getToken } from '@/discord/discord.js'
+import { backend_url, logout } from '@/api/api.js'
 import Vue from 'vue'
 export default {
     name: 'GuildView',
@@ -116,6 +131,16 @@ export default {
                 this.changed_data['log_channel'] = val
                 this.checkUpdate()
             }
+        },
+        allow_earrape: {
+            get() {
+                return this.data.data.allow_earrape ? this.data.data.allow_earrape : false
+            },
+            set(val) {
+                this.data.data['allow_earrape'] = val
+                this.changed_data['allow_earrape'] = val
+                this.checkUpdate()
+            }
         }
     },
     methods: {
@@ -124,12 +149,10 @@ export default {
             this.loading = true
             this.received_data = json_bigint.parse(json_bigint.stringify(this.data))
             this.checkUpdate()
-            const tokens = await getToken()
+            const token = localStorage.getItem('token')
             const config = {
             headers: {
-                access_token : tokens.access_token,
-                refresh_token : tokens.refresh_token,
-                expires_on : tokens.expires
+                authorization: `Token ${token}`
                 }
             }
             const body = { guild: this.guild_id, data : this.changed_data }
@@ -143,6 +166,10 @@ export default {
                 this.error_message = `An unknown error occurred`
                 if (error.response)
                 {
+                    if (error.response.status == 401) {
+                        logout()
+                        return
+                    }
                     const data = error.response.data
                     this.error_message = `Backend returned error ${data.code}: ${data.message}`
                 }
@@ -199,16 +226,14 @@ export default {
     },
     async mounted() {
         this.guild_id = this.$route.query.id
-        if(localStorage.getItem('code'))
+        if(localStorage.getItem('token'))
         {
             this.loading = true
-            const tokens = await getToken()
+            const token = localStorage.getItem('token')
             const config = {
             headers: {
-                access_token : tokens.access_token,
-                refresh_token : tokens.refresh_token,
-                expires_on : tokens.expires,
-                guild_id : this.guild_id,
+                    authorization: `Token ${token}`,
+                    guild_id: this.guild_id
                 },
                 transformResponse: (res) => {
                     return json_bigint.parse(res);
