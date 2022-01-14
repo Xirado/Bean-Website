@@ -87,7 +87,35 @@
                         </v-container>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
-                
+                                <v-expansion-panel>
+                    <v-expansion-panel-header>
+                        Leveling
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                        <v-container fluid>
+                            <v-row align="center" class="d-flex justify-start" no-gutters>
+                                <v-col cols="4" class="flex-grow-0 flex-shrink-0">
+                                    <span class="grey--text darken-2">Disabled Channels</span>
+                                </v-col>
+                                <v-col cols="8" style="min-width: 100px;" class="flex-grow-0 flex-shrink-1">
+                                    <v-autocomplete
+                                        v-model="xp_disabled_channels"
+                                        :items="getTextChannelsRaw()"
+                                        outlined
+                                        dense
+                                        label="Disabled Channels"
+                                        multiple>
+                                        <template #selection="{item}">
+                                            <v-chip :color="item.color" small outlined>
+                                                {{item.text}}
+                                            </v-chip>
+                                        </template>
+                                    </v-autocomplete>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
                 
             </v-expansion-panels>
             <v-divider class="my-4"></v-divider>
@@ -119,6 +147,16 @@ export default {
             set(val) {
                 this.data.data.dj_roles = val
                 this.changed_data.dj_roles = val
+                this.checkUpdate()
+            }
+        },
+        xp_disabled_channels: {
+            get() {
+                return this.data.data.no_xp_channels ? this.data.data.no_xp_channels.map(x => x.toString()) : null
+            },
+            set(val) {
+                this.data.data['no_xp_channels'] = val
+                this.changed_data['no_xp_channels'] = val
                 this.checkUpdate()
             }
         },
@@ -192,6 +230,16 @@ export default {
             for (const role of this.data.guild.roles) {
                 if (!String(role.id).localeCompare(String(this.data.guild.id))) continue
                 data.push({text: `${role.name}`, value: role.id.toString(), color: `#${role.color.toString(16)}`})
+            }
+            return data
+        },
+        getTextChannelsRaw() {
+            if (this.data == null) return null
+            let data = []
+            for (const channel of this.data.guild.channels)
+            {
+                if (channel.type != 0) continue
+                data.push({text: `#${channel.name}`, value: channel.id.valueOf()})
             }
             return data
         },
