@@ -45,7 +45,7 @@ export default {
             error : false,
             error_message : null,
             loading : false,
-            no_results = false
+            no_results : false
         }
     },
     async mounted() {

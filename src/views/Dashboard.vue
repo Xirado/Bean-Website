@@ -1,4 +1,5 @@
 <template>
+    <Wrapper>
     <div>
         <v-alert
         :value="!loading && !loggedIn"
@@ -32,6 +33,7 @@
             <GuildList :guilds="guilds" :baseInviteUrl="base_invite_url"/>
         </v-card>
     </div>
+</Wrapper>
 </template>
 
 
@@ -40,9 +42,10 @@ import EventBus from '@/events/event-bus.js'
 import { backend_url, logout } from '@/api/api.js'
 import axios from 'axios'
 import GuildList from '../components/GuildList.vue'
+import Wrapper from "@/components/Wrapper.vue"
 export default {
     name: 'Dashboard',
-    components: { GuildList },
+    components: { GuildList, Wrapper },
     data() {
         return {
             loggedIn: false,
