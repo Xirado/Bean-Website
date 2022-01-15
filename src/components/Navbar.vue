@@ -1,96 +1,198 @@
 <template>
-  <nav>
-    <v-app-bar flat color="#2a0d5d" clipped-left app>
-        <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-toolbar-title class="text-uppercase grey--text">
-          <v-img src="/img/bean.png" max-width="50"></v-img>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn v-if="!isSmall" text href="https://discord.gg/7WEjttJtKa" target="_blank" >
-            <span>Support</span>
-        </v-btn>
-        <v-btn v-if="!isSmall" text href="https://github.com/Xirado/Bean" target="_blank">
-            <span>Github</span>
-        </v-btn>
-        <v-btn v-if="!isSmall" :href='invite_link' target="_blank" color="indigo" class="mx-5">
-            <span>Add to Server</span>
-        </v-btn>
-                <!-- Open menu -->
-        <v-menu v-if="isSmall" bottom min-width="200px" rounded offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on" class="mx-1">
-            <v-icon class="grey--text">mdi-menu</v-icon>
-          </v-btn>
-        </template>
-        <v-card>
-          <v-list-item-content class="justify-center">
-            <div class="mx-auto text-center">
-                <v-btn text color="white" href="https://discord.gg/7WEjttJtKa" target="_blank">
-                  <span>Support</span>
-                </v-btn>
-                <v-spacer></v-spacer>
-              <v-btn text color="white" href="https://github.com/Xirado/Bean" target="_blank">
-                  <span>Github</span>
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn text color="white" :href='invite_link' target="_blank">
-                  <span>Add to Server</span>
-              </v-btn>
-            </div>
-          </v-list-item-content>
-        </v-card>
-      </v-menu>
-        <v-btn v-if="!loggedIn" text color="green" :href='login_link'>
-            <span>Login</span>
-            <v-icon right>mdi-exit-to-app</v-icon>
-        </v-btn>
-        
-        <v-menu v-if="user !== null && loggedIn" bottom min-width="200px" rounded offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn icon x-large v-on="on" class="mx-1">
-            <v-avatar color="brown" size="48">
-              <img :src="user.effective_avatar">
-            </v-avatar>
-          </v-btn>
-        </template>
-        <v-card>
-          <v-list-item-content class="justify-center">
-            <div class="mx-auto text-center">
-              <v-avatar color="brown" class="my-1">
-                <img :src="user.effective_avatar">
-              </v-avatar>
-              <h3>{{ user.username }}<span class="ml-1 grey--text">#{{ user.discriminator }}</span>
-              </h3>
-              <v-divider class="my-3"></v-divider>
-              <v-btn depressed rounded text color="red" @click="logout()">
-                Logout
-              </v-btn>
-            </div>
-          </v-list-item-content>
-        </v-card>
-      </v-menu>
-    </v-app-bar>
+  <nav
+    class="
+      top-0
+      z-30
+      bg-opacity-60 bg-zinc-900
+      backdrop-filter backdrop-blur
+      w-full
+      px-1
+      text-gray-100
+      py-1
+    "
+    v-bind:class="{ fixed: navfixed, sticky: !navfixed }"
+  >
+    <div class="flex justify-between items-center mx-4 my-auto">
+      <router-link to="/" custom>
+        <img src="/img/bean.png" class="w-16" />
+      </router-link>
+      <div class="flex items-center space-x-7">
+        <button
+          href="https://discord.gg/7WEjttJtKa"
+          target="_blank"
+          class="group p-1 font-medium"
+        >
+          <span>Support Server</span>
+          <hr
+            class="
+              scale-0
+              group-hover:scale-100
+              transition
+              duration-300
+              border-indigo-600 border-t-2
+            "
+          />
+        </button>
+        <button
+          :href="invite_link"
+          target="_blank"
+          color="indigo"
+          class="group p-1 font-medium"
+        >
+          <span>{{ loggedIn ? "Manage servers" : "Add to Server" }}</span>
+          <hr
+            class="
+              scale-0
+              group-hover:scale-100
+              transition
+              duration-300
+              border-indigo-600 border-t-2
+            "
+          />
+        </button>
 
-    <v-navigation-drawer absolute stateless clipped dark v-model="drawer" app color="#23272a">
-      <v-list>
-        <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
-          <v-list-item-action>
-            <v-icon class="grey--text">{{ link.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title class="white--text">{{ link.text }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
+        <button
+          v-if="!loggedIn"
+          class="
+            px-4
+            py-2
+            rounded
+            bg-indigo-300
+            hover:bg-opacity-20 hover:bg-indigo-600
+            border border-white/10
+            transition
+            duration-300
+            bg-opacity-[0.15]
+            font-semibold
+          "
+          :to="login_link"
+        >
+          <span>Login</span>
+        </button>
+        <button
+          v-if="user !== null && loggedIn"
+          @click="drawer = !drawer"
+          class="
+            rounded-full
+            w-10
+            h-10
+            ring ring-opacity-0
+            hover:ring-opacity-40
+            ring-indigo-600
+            focus:ring-opacity-100
+            transition
+            btn
+          "
+        >
+          <img
+            src="https://cdn.discordapp.com/avatars/423258218035150849/ab4f33f6d8a87f58fd95468696d71507.png"
+            class="rounded-full"
+          />
+        </button>
+        <div
+          v-if="drawer"
+          class="rounded-md bg-zinc-800 p-6 absolute right-4 top-20"
+        >
+          <img
+            src="https://cdn.discordapp.com/avatars/423258218035150849/ab4f33f6d8a87f58fd95468696d71507.png"
+            class="rounded-full w-10 h-10 mx-auto mb-3"
+          />
+          <h3 class="font-medium text-xl tracking-wide">
+            {{ user.username
+            }}<span class="text-gray-400 tracking-widest ml-1"
+              >#{{ user.discriminator }}</span
+            >
+          </h3>
+          <hr
+            class="mt-2 mx-10 border-t-2 border-indigo-300 border-opacity-25"
+          />
+          <div class="mt-2 flex flex-col justify-center">
+            <router-link
+              to="/commands"
+              class="
+                group
+                p-1
+                font-medium
+                mx-auto
+                text-lg
+                hover:text-indigo-200
+                transition
+                duration-300
+              "
+            >
+              <span>Commands</span>
+              <hr
+                class="
+                  scale-0
+                  group-hover:scale-100
+                  transition
+                  duration-300
+                  border-indigo-600 border-t-2
+                "
+              />
+            </router-link>
+            <a
+              href="https://github.com/Xirado/Bean"
+              target="_blank"
+              class="
+                group
+                p-1
+                font-medium
+                mx-auto
+                text-lg
+                hover:text-indigo-200
+                transition
+                duration-300
+              "
+            >
+              <span>Github</span>
+              <hr
+                class="
+                  scale-0
+                  group-hover:scale-100
+                  transition
+                  duration-300
+                  border-indigo-600 border-t-2
+                "
+              />
+            </a>
+            <button
+              class="
+                group
+                p-1
+                font-medium
+                mx-auto
+                text-lg
+                btn
+                text-red-200
+                hover:text-red-400
+                transition
+                duration-300
+              "
+              @click="logout()"
+            >
+              <span>Logout</span>
+              <hr
+                class="
+                  scale-0
+                  group-hover:scale-100
+                  transition
+                  duration-300
+                  border-red-600 border-t-2
+                "
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </nav>
 </template>
 
 <script>
-import { logout, fetchLoginURL, fetchInviteURL } from '@/api/api.js'
-import EventBus from '@/events/event-bus.js'
-const json_bigint = require('json-bigint')
+import { logout, fetchLoginURL, fetchInviteURL } from "@/api/api.js";
+import EventBus from "@/events/event-bus.js";
+const json_bigint = require("json-bigint");
 export default {
   data() {
     return {
@@ -99,57 +201,42 @@ export default {
       loggedIn: false,
       login_link: null,
       invite_link: null,
-      isSmall : this.$vuetify.breakpoint.smAndDown,
-      links: [
-        // { icon: 'mdi-home', text: 'Home', route: '/' },
-        { icon: 'mdi-view-dashboard', text: 'Dashboard', route: '/dashboard' },
-        { icon: 'mdi-folder', text: 'Commands', route: '/commands' }
-      ],
-    }
+    };
   },
-  methods : {
+  methods: {
     logout() {
-      logout()
-      console.log('Logged out!')
-      this.loggedIn = false
+      logout();
+      console.log("Logged out!");
+      this.loggedIn = false;
     },
-    resize() {
-      if (window.innerWidth > 800)
-        this.isSmall = false
-      else 
-        this.isSmall = true
-    }
   },
   created() {
-    window.addEventListener('resize', this.resize)
+    window.addEventListener("resize", this.resize);
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.resize)
+    window.removeEventListener("resize", this.resize);
   },
   async mounted() {
-    this.loggedIn = localStorage.getItem('token') ? true : false
-    this.login_link = await fetchLoginURL()
-    this.invite_link = await fetchInviteURL()
-    EventBus.$on('LoginEvent', async (value) => {
-      this.loggedIn = value
-      if (value)
-      {
-        this.user = json_bigint.parse(localStorage.getItem('user'))
+    this.loggedIn = localStorage.getItem("token") ? true : false;
+    this.login_link = await fetchLoginURL();
+    this.invite_link = await fetchInviteURL();
+    EventBus.$on("LoginEvent", async (value) => {
+      this.loggedIn = value;
+      if (value) {
+        this.user = json_bigint.parse(localStorage.getItem("user"));
       }
-    })
-    if (localStorage.getItem('token') == null) {
-      this.loggedIn = false
+    });
+    if (localStorage.getItem("token") == null) {
+      this.loggedIn = false;
     }
-    if (localStorage.getItem('token'))
-    {
-      this.loggedIn = true
-      const user = json_bigint.parse(localStorage.getItem('user'))
-      this.user = user
+    if (localStorage.getItem("token")) {
+      this.loggedIn = true;
+      const user = json_bigint.parse(localStorage.getItem("user"));
+      this.user = user;
     }
-  }
-  
-}
+  },
+  props: ["navfixed"],
+};
 </script>
 
-<style>
-</style>
+<style></style>

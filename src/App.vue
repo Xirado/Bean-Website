@@ -4,6 +4,7 @@
 
 <script>
 import { logout } from "@/api/api.js";
+import "../public/output.css";
 export default {
   name: "App",
 
