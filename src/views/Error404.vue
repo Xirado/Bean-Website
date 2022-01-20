@@ -1,19 +1,12 @@
 <template>
-    <div>
-        <v-alert
-        outlined
-        type="error"
-        elevation="2"
-        transition="scale-transition"
-        >
-            The requested site cannot be found!
-        </v-alert>
-    </div>
+    <ErrorMessage title="404" message="Page not found" />
 </template>
 
 <script>
+import ErrorMessage from "@/components/ErrorMessage.vue";
 export default {
-    name: 'Error404'
+    name: 'Error404',
+    components: { ErrorMessage }
 }
 </script>
 

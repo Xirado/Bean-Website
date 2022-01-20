@@ -110,12 +110,12 @@
 import EventBus from "@/events/event-bus.js";
 import { backend_url, logout, fetchLoginURL } from "@/api/api.js";
 import axios from "axios";
-//import GuildList from '../components/GuildList.vue'
+import GuildList from '@/components/GuildList.vue'
 import Wrapper from "@/components/Wrapper.vue";
 
 export default {
   name: "Dashboard",
-  components: { Wrapper },
+  components: { Wrapper, GuildList },
   data() {
     return {
       loggedIn: false,
