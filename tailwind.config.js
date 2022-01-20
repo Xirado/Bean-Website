@@ -1,10 +1,6 @@
 module.exports = {
   content: [
-    "./src/views/Home.vue",
-    "./src/components/Navbar.vue",
-    "./src/components/Wrapper.vue",
-    "./src/views/Dashboard.vue",
-    "./src/components/GuildList.vue",
+    "./src/**/*.vue",
   ],
   theme: {
     extend: {
