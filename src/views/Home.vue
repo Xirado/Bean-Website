@@ -7,8 +7,11 @@
         <h1 class="text-gray-50 text-4xl font-semibold max-w-xs">The discord bot for something</h1>
         <span class="text-gray-400 mt-2">Short description</span>
         <div class="flex mt-8">
+          <router-link to="/dashboard">
           <button class="bg-indigo-600 px-4 py-2 mr-3 text-gray-100 font-medium inline-flex rounded hover:bg-indigo-700 hover:bg-opacity-ss90 transition duration-300">Manage Servers</button>
+          </router-link><router-link to="/commands">
           <button class="bg-neutral-600 px-4 py-2 mr-3 text-gray-300 font-medium inline-flex rounded bg-opacity-75 hover:bg-opacity-90 transition duration-300">Read the Docs</button>
+          </router-link>
         </div>
       </div>
       <div></div>

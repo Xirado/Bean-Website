@@ -1,76 +1,223 @@
 <template>
-    <div>
-        <v-alert color="blue" text type="info">
-            <div>
-                <Chip color="red" text="RED" /> arguments are required<br/>
-                <Chip color="green" text="GREEN" /> arguments are optional
+  <Wrapper>
+    <div class="max-w-screen-lg mx-auto text-gray-200 px-4 my-10 w-full">
+      <h1 class="font-semibold text-4xl mb-3 tracking-wider">Commands List</h1>
+      <div
+        class="
+          rounded-md
+          bg-indigo-600/20
+          p-4
+          shadow-xl
+          text-lg
+          font-medium
+          items-center
+          tracking-wide
+          flex
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8 mr-6 text-blue-300"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <div>
+          <span class="flex mb-4">
+            <div
+              class="
+                uppercase
+                text-sm
+                font-medium
+                p-1
+                rounded
+                shadow-md
+                bg-red-500/40
+                mr-2
+              "
+            >
+              Red
             </div>
-        </v-alert>
-        <v-expansion-panels popout>
-            <v-expansion-panel v-for="command in commands" :key="command.name">
-                <v-expansion-panel-header>
-                    <div>
-                        <span class="mr-1">/{{ command.name }}</span>
-                        <Chip tooltip v-for="(option, index) in command.options" :text="option.name.toUpperCase()" :color="option.required ? 'red' : 'green'" :key="index">
-                            <div><strong>Type: {{ option.type }}<br/>{{ option.description }}</strong></div>
-                        </Chip>
+            arguments are required</span
+          >
+          <span class="flex">
+            <div
+              class="
+                uppercase
+                text-sm
+                font-medium
+                p-1
+                rounded
+                shadow-md
+                bg-green-500/30
+                mr-2
+              "
+            >
+              Green
+            </div>
+            arguments are optional</span
+          >
+        </div>
+      </div>
+      <div class="mt-8 space-y-4">
+        <div
+          v-for="command in commands"
+          :key="command.name"
+          class="
+            rounded-md
+            bg-black/30
+            p-4
+            shadow-lg
+            items-center
+            tracking-wide
+            cursor-pointer
+          "
+        >
+          <div>
+            <div class="flex items-center">
+              <span class="text-lg font-bold tracking-wider mr-4"
+                >/{{ command.name }}</span
+              >
+              <div
+                v-for="(option, index) in command.options"
+                :key="index"
+                class="
+                  text-sm
+                  font-medium
+                  p-1
+                  rounded
+                  shadow
+                  mr-2
+                  relative
+                  group
+                "
+                :class="option.required ? 'bg-red-500/40' : 'bg-green-500/30'"
+              >
+                <h2 class="uppercase">{{ option.name }}</h2>
+                <div
+                  class="
+                    absolute
+                    top-10
+                    rounded
+                    bg-gray-700/50
+                    backdrop-blur-lg
+                    p-1
+                    w-48
+                    hidden
+                    group-hover:block
+                  "
+                >
+                  Type: {{ option.type }} <br />
+                  <span class="mt-2">{{ option.description }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div v-if="command.sub_commands" class="my-2 space-y-2">
+              <div
+                class="bg-cyan-500/10 rounded p-3"
+                v-for="sub_command in command.sub_commands"
+                :key="sub_command.name"
+              >
+                <div>
+                  <div>
+                    <h3 class="mr-1 flex">
+                      /{{ command.name }}
+                      <span
+                        class="
+                          text-sm
+                          font-medium
+                          p-1
+                          rounded
+                          shadow
+                          mr-2
+                          relative
+                          bg-indigo-500/20
+                          mx-2
+                        "
+                        >{{ sub_command.name }}</span
+                      >
 
-                    </div>
-                </v-expansion-panel-header>
-                <v-expansion-panel-content>
-                    <v-expansion-panels v-if="command.sub_commands" class="my-2">
-                        <v-expansion-panel class="indigo darken-4" v-for="sub_command in command.sub_commands" :key="sub_command.name">
-                            <v-expansion-panel-header>
-                                <div>
-                                    <span class="mr-1">/{{ command.name }} {{ sub_command.name }}</span>
-                                    <Chip tooltip v-for="(option, index) in command.options" :text="option.name.toUpperCase()" :color="option.required ? 'red' : 'green'" :key="index">
-                                        <div><strong>Type: {{ option.type }}<br/>{{ option.description }}</strong></div>
-                                    </Chip>
-                                </div>                                
-                            </v-expansion-panel-header>
-                            <v-expansion-panel-content>
-                                <v-alert v-if="Object.keys(sub_command.options).length > 0" text color="info">
-                                    <span v-for="(option, index) in sub_command.options" :key="index">
-                                        <span class="indigo--text mr-1">{{ option.name.toUpperCase() }}:</span>
-                                        <span> {{ option.description }} </span>
-                                        <br/>
-                                    </span>
-                                </v-alert>
-                                <div class="text-body-2 grey--text">
-                                    {{ sub_command.description }}
-                                </div>   
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
-                    </v-expansion-panels>
-                    <v-alert v-if="Object.keys(command.options).length > 0" text color="info">
-                        <span v-for="(option, index) in command.options" :key="index">
-                            <span class="indigo--text mr-1">{{ option.name.toUpperCase() }}:</span>
-                            <span> {{ option.description }} </span>
-                            <br/>
-                        </span>
-                    </v-alert>
-                    <div class="text-body-2 grey--text">
-                        {{ command.description }}
-                    </div>
-                </v-expansion-panel-content>
-            </v-expansion-panel>
-        </v-expansion-panels>
+                      <div
+                        v-if="Object.keys(sub_command.options).length > 0"
+                        class="flex space-x-2"
+                      >
+                        <div
+                          v-for="(option, index) in sub_command.options"
+                          :key="index"
+                          class="
+                            text-sm
+                            font-medium
+                            p-1
+                            rounded
+                            shadow
+                            relative
+                            group
+                          "
+                          :class="
+                            option.required
+                              ? 'bg-red-500/40'
+                              : 'bg-green-500/30'
+                          "
+                        >
+                          <h2 class="uppercase">{{ option.name }}</h2>
+                          <div
+                            class="
+                              absolute
+                              top-10
+                              rounded
+                              bg-gray-700/50
+                              backdrop-blur-lg
+                              p-1
+                              w-48
+                              hidden
+                              group-hover:block
+                            "
+                          >
+                            Type: {{ option.type }} <br />
+                            <span class="mt-2">{{ option.description }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </h3>
+                  </div>
+                </div>
+                <div>
+                  <div class="text-stone-300">
+                    {{ sub_command.description }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-stone-300">
+              {{ command.description }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </Wrapper>
 </template>
 
 <script>
-import { fetchCommands } from '@/api/api.js'
-import Chip from '@/components/Chip'
+import { fetchCommands } from "@/api/api.js";
+import Wrapper from "@/components/Wrapper.vue";
 export default {
-    name: 'Commands',
-    components: { Chip },
-    async created() {
-        this.commands = await fetchCommands()
-    },
-    data() {
-        return {
-            commands: null
-        }
-    }
-}
+  name: "Commands",
+  components: { Wrapper },
+  async created() {
+    this.commands = await fetchCommands();
+  },
+  data() {
+    return {
+      commands: null,
+    };
+  },
+};
 </script>

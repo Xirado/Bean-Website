@@ -4,7 +4,7 @@
       <div
         class="
           rounded-lg
-          bg-indigo-600 bg-opacity-20
+          bg-indigo-600/20
           mx-auto
           p-6
           text-xl
