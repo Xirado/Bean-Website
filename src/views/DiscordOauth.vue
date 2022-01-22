@@ -2,17 +2,7 @@
 	<Wrapper>
 		<div class="text-gray-100 flex flex-col">
 			<div
-				class="
-					rounded-lg
-					bg-indigo-600 bg-opacity-20
-					mx-auto
-					p-6
-					text-xl
-					my-auto
-					font-semibold
-					mt-10
-					flex flex-col
-				"
+				class="rounded-lg bg-indigo-600 bg-opacity-20 mx-auto p-6 text-xl my-auto font-semibold mt-10 flex flex-col"
 			>
 				Login failed!
 				<div class="space-x-4 mx-auto mt-4 text-base">
