@@ -1,16 +1,16 @@
 <template>
 	<Wrapper>
-		<div class="text-gray-100 flex flex-col">
+		<div class="flex flex-col text-gray-100">
 			<div
-				class="rounded-lg mx-auto p-6 text-xl my-auto shadow-xl font-semibold mt-10 flex flex-col text-center min-w-[15rem]"
+				class="mx-auto my-auto mt-10 flex min-w-[15rem] flex-col rounded-lg p-6 text-center text-xl font-semibold shadow-xl"
 				:class="red ? 'bg-red-600/30' : 'bg-indigo-600/20'"
 			>
 				{{ title }}
 				<span class="text-lg font-normal text-gray-400">{{ message }}</span>
-				<div class="space-x-4 mx-auto mt-4 text-base">
+				<div class="mx-auto mt-4 space-x-4 text-base">
 					<router-link to="/">
 						<button
-							class="btn rounded bg-zinc-900 hover:brightness-75 transition duration-200 px-4 py-2 tet-gray-400"
+							class="btn tet-gray-400 rounded bg-zinc-900 px-4 py-2 transition duration-200 hover:brightness-75"
 						>
 							Home
 						</button>

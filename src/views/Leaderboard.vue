@@ -7,25 +7,25 @@
 			<div v-if="!loading && guild && users">
 				<div class="relative">
 					<div
-						class="[background-image:url('/img/universe.jpg')] h-[70vh] bg-cover bg-no-repeat bg-top flex"
+						class="flex h-[70vh] bg-cover bg-top bg-no-repeat [background-image:url('/img/universe.jpg')]"
 					>
 						<!--would be cool to do server banner here rather than the universe thing-->
 						<div
-							class="flex flex-col md:flex-row mx-auto max-w-screen-lg px-4 items-center w-full justify-center md:justify-start mb-28 sm:mb-8"
+							class="mx-auto mb-28 flex w-full max-w-screen-lg flex-col items-center justify-center px-4 sm:mb-8 md:flex-row md:justify-start"
 						>
 							<img
 								:src="guild.icon"
 								alt=""
-								class="rounded-full h-20 md:h-28 md:mr-8 shadow-lg"
+								class="h-20 rounded-full shadow-lg md:mr-8 md:h-28"
 							/>
-							<h1 class="text-5xl md:text-8xl font-medium text-white truncate">
+							<h1 class="truncate text-5xl font-medium text-white md:text-8xl">
 								{{ guild.name }}
-								<hr class="hidden md:block w-8 border-t-4 border-pink-600" />
+								<hr class="hidden w-8 border-t-4 border-pink-600 md:block" />
 							</h1>
 						</div>
 					</div>
 					<div
-						class="bg-gradient-to-b from-transparent via-transparent to-zinc-850 inset-0 absolute"
+						class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-zinc-850"
 					></div>
 				</div>
 				<LeaderboardList :users="users" />

@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .btn {
-	@apply focus:outline-none cursor-pointer select-none;
+	@apply cursor-pointer select-none focus:outline-none;
 }

@@ -1,9 +1,9 @@
 <template>
 	<nav
-		class="top-0 z-30 bg-opacity-60 bg-zinc-900 backdrop-filter backdrop-blur w-full px-1 text-gray-100 py-1"
+		class="top-0 z-30 w-full bg-zinc-900 bg-opacity-60 px-1 py-1 text-gray-100 backdrop-blur backdrop-filter"
 		v-bind:class="{ fixed: navfixed, sticky: !navfixed }"
 	>
-		<div class="flex justify-between items-center mx-4 my-auto">
+		<div class="mx-4 my-auto flex items-center justify-between">
 			<router-link to="/" custom>
 				<img src="/img/bean.jpg" class="w-16" />
 			</router-link>
@@ -15,7 +15,7 @@
 				>
 					<span>Support Server</span>
 					<hr
-						class="scale-0 group-hover:scale-100 transition duration-300 border-indigo-600 border-t-2"
+						class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 					/>
 				</button>
 				<button
@@ -26,13 +26,13 @@
 				>
 					<span>{{ loggedIn ? "Manage servers" : "Add to Server" }}</span>
 					<hr
-						class="scale-0 group-hover:scale-100 transition duration-300 border-indigo-600 border-t-2"
+						class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 					/>
 				</button>
 
 				<button
 					v-if="!loggedIn"
-					class="px-4 py-2 rounded bg-indigo-300 hover:bg-opacity-20 hover:bg-indigo-600 border border-white/10 transition duration-300 bg-opacity-[0.15] font-semibold"
+					class="rounded border border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20"
 					:to="login_link"
 				>
 					<span>Login</span>
@@ -40,7 +40,7 @@
 				<button
 					v-if="user !== null && loggedIn"
 					@click="drawer = !drawer"
-					class="rounded-full w-10 h-10 ring ring-opacity-0 hover:ring-opacity-40 ring-indigo-600 focus:ring-opacity-100 transition btn"
+					class="btn h-10 w-10 rounded-full ring ring-indigo-600 ring-opacity-0 transition hover:ring-opacity-40 focus:ring-opacity-100"
 				>
 					<img
 						src="https://cdn.discordapp.com/avatars/423258218035150849/ab4f33f6d8a87f58fd95468696d71507.png"
@@ -49,48 +49,48 @@
 				</button>
 				<div
 					v-if="drawer"
-					class="rounded-md bg-zinc-800 p-6 absolute right-4 top-20"
+					class="absolute right-4 top-20 rounded-md bg-zinc-800 p-6"
 				>
 					<img
 						src="https://cdn.discordapp.com/avatars/423258218035150849/ab4f33f6d8a87f58fd95468696d71507.png"
-						class="rounded-full w-10 h-10 mx-auto mb-3"
+						class="mx-auto mb-3 h-10 w-10 rounded-full"
 					/>
-					<h3 class="font-medium text-xl tracking-wide">
+					<h3 class="text-xl font-medium tracking-wide">
 						{{ user.username
-						}}<span class="text-gray-400 tracking-widest ml-1"
+						}}<span class="ml-1 tracking-widest text-gray-400"
 							>#{{ user.discriminator }}</span
 						>
 					</h3>
 					<hr
-						class="mt-2 mx-10 border-t-2 border-indigo-300 border-opacity-25"
+						class="mx-10 mt-2 border-t-2 border-indigo-300 border-opacity-25"
 					/>
 					<div class="mt-2 flex flex-col justify-center">
 						<router-link
 							to="/commands"
-							class="group p-1 font-medium mx-auto text-lg hover:text-indigo-200 transition duration-300"
+							class="group mx-auto p-1 text-lg font-medium transition duration-300 hover:text-indigo-200"
 						>
 							<span>Commands</span>
 							<hr
-								class="scale-0 group-hover:scale-100 transition duration-300 border-indigo-600 border-t-2"
+								class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 							/>
 						</router-link>
 						<a
 							href="https://github.com/Xirado/Bean"
 							target="_blank"
-							class="group p-1 font-medium mx-auto text-lg hover:text-indigo-200 transition duration-300"
+							class="group mx-auto p-1 text-lg font-medium transition duration-300 hover:text-indigo-200"
 						>
 							<span>Github</span>
 							<hr
-								class="scale-0 group-hover:scale-100 transition duration-300 border-indigo-600 border-t-2"
+								class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 							/>
 						</a>
 						<button
-							class="group p-1 font-medium mx-auto text-lg btn text-red-200 hover:text-red-400 transition duration-300"
+							class="group btn mx-auto p-1 text-lg font-medium text-red-200 transition duration-300 hover:text-red-400"
 							@click="logout()"
 						>
 							<span>Logout</span>
 							<hr
-								class="scale-0 group-hover:scale-100 transition duration-300 border-red-600 border-t-2"
+								class="scale-0 border-t-2 border-red-600 transition duration-300 group-hover:scale-100"
 							/>
 						</button>
 					</div>

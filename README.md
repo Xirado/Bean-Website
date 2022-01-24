@@ -28,7 +28,7 @@ npm run build
 
 ### Pre-commit checklist
 
-Every push should *always* be linted and formatted to ensure readable and quality code. Use the commands below every time before you commit:
+Every push should _always_ be linted and formatted to ensure readable and quality code. Use the commands below every time before you commit:
 
 ```
 npm run lint

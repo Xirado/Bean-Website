@@ -14,13 +14,13 @@
 						<v-expansion-panel-content>
 							<v-container fluid>
 								<v-row align="center" class="d-flex justify-start" no-gutters>
-									<v-col cols="4" class="flex-grow-0 flex-shrink-0">
+									<v-col cols="4" class="flex-shrink-0 flex-grow-0">
 										<span class="grey--text darken-2">Logchannel</span>
 									</v-col>
 									<v-col
 										cols="8"
 										style="min-width: 100px"
-										class="flex-grow-0 flex-shrink-1"
+										class="flex-shrink-1 flex-grow-0"
 									>
 										<v-select
 											:items="getTextChannels()"
@@ -37,13 +37,13 @@
 						<v-expansion-panel-content>
 							<v-container fluid>
 								<v-row align="center" class="d-flex justify-start" no-gutters>
-									<v-col cols="4" class="flex-grow-0 flex-shrink-0">
+									<v-col cols="4" class="flex-shrink-0 flex-grow-0">
 										<span class="grey--text darken-2">DJ Roles</span>
 									</v-col>
 									<v-col
 										cols="8"
 										style="min-width: 100px"
-										class="flex-grow-0 flex-shrink-1"
+										class="flex-shrink-1 flex-grow-0"
 									>
 										<v-autocomplete
 											v-model="dj_roles"
@@ -62,7 +62,7 @@
 									</v-col>
 								</v-row>
 								<v-row align="center" class="d-flex justify-start" no-gutters>
-									<v-col cols="4" class="flex-grow-0 flex-shrink-0">
+									<v-col cols="4" class="flex-shrink-0 flex-grow-0">
 										<span class="grey--text darken-2"
 											>Allow volume above 100%</span
 										>
@@ -79,13 +79,13 @@
 						<v-expansion-panel-content>
 							<v-container fluid>
 								<v-row align="center" class="d-flex justify-start" no-gutters>
-									<v-col cols="4" class="flex-grow-0 flex-shrink-0">
+									<v-col cols="4" class="flex-shrink-0 flex-grow-0">
 										<span class="grey--text darken-2">Disabled Channels</span>
 									</v-col>
 									<v-col
 										cols="8"
 										style="min-width: 100px"
-										class="flex-grow-0 flex-shrink-1"
+										class="flex-shrink-1 flex-grow-0"
 									>
 										<v-autocomplete
 											v-model="xp_disabled_channels"

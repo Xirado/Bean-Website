@@ -1,19 +1,19 @@
 <template>
 	<Wrapper>
-		<div class="text-gray-100 flex flex-col">
+		<div class="flex flex-col text-gray-100">
 			<div
 				v-if="error && !loading"
-				class="rounded-lg bg-red-600 bg-opacity-20 mx-auto p-6 text-xl my-auto font-semibold mt-10 flex flex-col"
+				class="mx-auto my-auto mt-10 flex flex-col rounded-lg bg-red-600 bg-opacity-20 p-6 text-xl font-semibold"
 			>
 				{{ error_message }}
-				<div class="space-x-4 mx-auto mt-4 text-base">
+				<div class="mx-auto mt-4 space-x-4 text-base">
 					<a href="/dashboard">
 						<button class="btn rounded bg-indigo-600 px-4 py-2 font-medium">
 							Reload
 						</button>
 					</a>
 					<router-link to="/">
-						<button class="btn rounded bg-zinc-900 px-4 py-2 tet-gray-400">
+						<button class="btn tet-gray-400 rounded bg-zinc-900 px-4 py-2">
 							Home
 						</button>
 					</router-link>
@@ -21,10 +21,10 @@
 			</div>
 			<div
 				v-if="loading"
-				class="absolute bottom-10 right-10 inline-flex items-center rounded px-4 py-2 bg-indigo-400 border border-white/10 transition duration-300 bg-opacity-[0.15] font-semibold"
+				class="absolute bottom-10 right-10 inline-flex items-center rounded border border-white/10 bg-indigo-400 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300"
 			>
 				<svg
-					class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+					class="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"
@@ -47,10 +47,10 @@
 			</div>
 			<div
 				v-if="Object.keys(guilds).length === 0 && !error && !loading"
-				class="rounded-lg bg-indigo-600 bg-opacity-20 mx-auto p-6 text-xl my-auto font-semibold mt-10 flex flex-col"
+				class="mx-auto my-auto mt-10 flex flex-col rounded-lg bg-indigo-600 bg-opacity-20 p-6 text-xl font-semibold"
 			>
 				You don't have the Administrator permission in any guilds
-				<div class="space-x-4 mx-auto mt-4 text-base">
+				<div class="mx-auto mt-4 space-x-4 text-base">
 					<a href="/dashboard">
 						<button class="btn rounded bg-indigo-600 px-4 py-2 font-medium">
 							Reload

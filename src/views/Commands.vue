@@ -1,14 +1,14 @@
 <template>
 	<Wrapper>
-		<div class="max-w-screen-lg mx-auto text-gray-200 px-4 my-10 w-full">
-			<h1 class="font-semibold text-4xl mb-3 tracking-wider">Commands List</h1>
+		<div class="mx-auto my-10 w-full max-w-screen-lg px-4 text-gray-200">
+			<h1 class="mb-3 text-4xl font-semibold tracking-wider">Commands List</h1>
 			<!--Arguments info box-->
 			<div
-				class="rounded-md bg-indigo-600/20 p-4 shadow-xl text-lg font-medium items-center tracking-wide flex sticky z-30 top-20 backdrop-blur-xl mx-3"
+				class="sticky top-20 z-30 mx-3 flex items-center rounded-md bg-indigo-600/20 p-4 text-lg font-medium tracking-wide shadow-xl backdrop-blur-xl"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="h-8 w-8 mr-6 text-blue-300"
+					class="mr-6 h-8 w-8 text-blue-300"
 					viewBox="0 0 20 20"
 					fill="currentColor"
 				>
@@ -19,9 +19,9 @@
 					/>
 				</svg>
 				<div>
-					<span class="flex mb-4">
+					<span class="mb-4 flex">
 						<div
-							class="uppercase text-sm font-medium p-1 rounded shadow-md bg-red-500/40 mr-2"
+							class="mr-2 rounded bg-red-500/40 p-1 text-sm font-medium uppercase shadow-md"
 						>
 							Red
 						</div>
@@ -29,7 +29,7 @@
 					>
 					<span class="flex">
 						<div
-							class="uppercase text-sm font-medium p-1 rounded shadow-md bg-green-500/30 mr-2"
+							class="mr-2 rounded bg-green-500/30 p-1 text-sm font-medium uppercase shadow-md"
 						>
 							Green
 						</div>
@@ -40,10 +40,10 @@
 			<!--Loading model-->
 			<div
 				v-if="!commands"
-				class="absolute bottom-10 right-10 inline-flex items-center rounded px-4 py-2 bg-indigo-400 border border-white/10 transition duration-300 bg-opacity-[0.15] font-semibold"
+				class="absolute bottom-10 right-10 inline-flex items-center rounded border border-white/10 bg-indigo-400 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300"
 			>
 				<svg
-					class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+					class="-ml-1 mr-3 h-5 w-5 animate-spin text-white"
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"
@@ -69,25 +69,25 @@
 				<div
 					v-for="command in commands"
 					:key="command.name"
-					class="rounded-md bg-black/30 p-4 shadow-lg items-center tracking-wide cursor-pointer"
+					class="cursor-pointer items-center rounded-md bg-black/30 p-4 tracking-wide shadow-lg"
 				>
 					<div>
 						<!--Command name & main args-->
 						<div
-							class="flex items-center flex-wrap flex-col space-y-2 sm:flex-row sm:space-y-0"
+							class="flex flex-col flex-wrap items-center space-y-2 sm:flex-row sm:space-y-0"
 						>
-							<span class="text-lg font-bold tracking-wider mr-4"
+							<span class="mr-4 text-lg font-bold tracking-wider"
 								>/{{ command.name }}</span
 							>
 							<div
 								v-for="(option, index) in command.options"
 								:key="index"
-								class="text-sm font-medium p-2 md:p-1 rounded shadow mr-2 relative group"
+								class="group relative mr-2 rounded p-2 text-sm font-medium shadow md:p-1"
 								:class="option.required ? 'bg-red-500/40' : 'bg-green-500/30'"
 							>
 								<h2 class="uppercase">{{ option.name }}</h2>
 								<div
-									class="absolute top-10 rounded bg-gray-700/50 backdrop-blur-lg p-1 w-48 hidden group-hover:block z-10"
+									class="absolute top-10 z-10 hidden w-48 rounded bg-gray-700/50 p-1 backdrop-blur-lg group-hover:block"
 								>
 									Type: {{ option.type }} <br />
 									<span class="mt-2">{{ option.description }}</span>
@@ -99,29 +99,29 @@
 					<div>
 						<div v-if="command.sub_commands" class="my-2 space-y-2">
 							<div
-								class="bg-cyan-500/10 rounded p-3"
+								class="rounded bg-cyan-500/10 p-3"
 								v-for="sub_command in command.sub_commands"
 								:key="sub_command.name"
 							>
 								<div>
 									<div>
 										<h3
-											class="flex flex-wrap flex-col space-y-2 sm:flex-row sm:space-y-0 text-center"
+											class="flex flex-col flex-wrap space-y-2 text-center sm:flex-row sm:space-y-0"
 										>
 											<span class="hidden sm:block">/{{ command.name }} </span>
 											<span
-												class="text-sm font-medium sm:p-1 p-2 rounded shadow relative bg-indigo-500/20 sm:mx-2 mx-auto uppercase"
+												class="relative mx-auto rounded bg-indigo-500/20 p-2 text-sm font-medium uppercase shadow sm:mx-2 sm:p-1"
 												>{{ sub_command.name }}</span
 											>
 
 											<div
 												v-if="Object.keys(sub_command.options).length > 0"
-												class="flex sm:space-x-2 flex-col sm:flex-row flex-wrap items-center space-y-2 sm:space-y-0"
+												class="flex flex-col flex-wrap items-center space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0"
 											>
 												<div
 													v-for="(option, index) in sub_command.options"
 													:key="index"
-													class="text-sm font-medium p-1 rounded shadow relative group"
+													class="group relative rounded p-1 text-sm font-medium shadow"
 													:class="
 														option.required
 															? 'bg-red-500/40'
@@ -130,7 +130,7 @@
 												>
 													<h2 class="uppercase">{{ option.name }}</h2>
 													<div
-														class="absolute top-10 rounded bg-gray-700/50 backdrop-blur-lg p-1 w-48 hidden group-hover:block z-10"
+														class="absolute top-10 z-10 hidden w-48 rounded bg-gray-700/50 p-1 backdrop-blur-lg group-hover:block"
 													>
 														Type: {{ option.type }} <br />
 														<span class="mt-2">{{ option.description }}</span>
@@ -142,14 +142,14 @@
 								</div>
 								<!---Command description-->
 								<div>
-									<div class="text-stone-300 text-center sm:text-left">
+									<div class="text-center text-stone-300 sm:text-left">
 										{{ sub_command.description }}
 									</div>
 								</div>
 							</div>
 						</div>
 						<div
-							class="text-stone-300 text-center sm:text-left text-lg sm:text-base"
+							class="text-center text-lg text-stone-300 sm:text-left sm:text-base"
 						>
 							{{ command.description }}
 						</div>

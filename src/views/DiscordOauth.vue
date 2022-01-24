@@ -1,13 +1,13 @@
 <template>
 	<Wrapper>
-		<div class="text-gray-100 flex flex-col">
+		<div class="flex flex-col text-gray-100">
 			<div
-				class="rounded-lg bg-indigo-600 bg-opacity-20 mx-auto p-6 text-xl my-auto font-semibold mt-10 flex flex-col"
+				class="mx-auto my-auto mt-10 flex flex-col rounded-lg bg-indigo-600 bg-opacity-20 p-6 text-xl font-semibold"
 			>
 				Login failed!
-				<div class="space-x-4 mx-auto mt-4 text-base">
+				<div class="mx-auto mt-4 space-x-4 text-base">
 					<router-link to="/">
-						<button class="btn rounded bg-zinc-900 px-4 py-2 tet-gray-400">
+						<button class="btn tet-gray-400 rounded bg-zinc-900 px-4 py-2">
 							Home
 						</button>
 					</router-link>

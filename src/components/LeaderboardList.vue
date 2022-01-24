@@ -1,11 +1,11 @@
 <template>
 	<div
-		class="max-w-screen-lg px-4 w-full mx-auto -translate-y-56 sm:-translate-y-40 text-gray-200 space-y-4"
+		class="mx-auto w-full max-w-screen-lg -translate-y-56 space-y-4 px-4 text-gray-200 sm:-translate-y-40"
 	>
 		<template v-for="(user, index) in users">
 			<div
 				:key="index"
-				class="rounded-md shadow-md px-4 py-2 flex items-center justify-between"
+				class="flex items-center justify-between rounded-md px-4 py-2 shadow-md"
 				:class="{
 					'bg-black/30': index != 0,
 					'bg-amber-500': index == 0,
@@ -18,7 +18,7 @@
 			>
 				<div class="flex items-center space-x-4">
 					<div
-						class="rounded-full shadow-2xl h-10 w-10 bg-black flex items-center justify-center"
+						class="flex h-10 w-10 items-center justify-center rounded-full bg-black shadow-2xl"
 						:class="{
 							' bg-opacity-50': index == 0 || index == 1 || index == 2,
 							'bg-opacity-100': index != 0 && index != 1 && index != 2,
@@ -26,7 +26,7 @@
 					>
 						<span
 							v-if="index != 0 && index != 1 && index != 2"
-							class="font-medium truncate"
+							class="truncate font-medium"
 						>
 							{{ index + 1 }}
 						</span>
@@ -35,12 +35,12 @@
 						<span v-if="index == 2"> 🥉 </span>
 					</div>
 					<img
-						class="rounded-full h-14 w-14 bg-black bg-opacity-50 flex items-center justify-center"
+						class="flex h-14 w-14 items-center justify-center rounded-full bg-black bg-opacity-50"
 						v-if="user.avatar"
 						:src="user.avatar"
 					/>
 					<div class="">
-						<h3 class="text-xl font-medium flex flex-col sm:flex-row">
+						<h3 class="flex flex-col text-xl font-medium sm:flex-row">
 							<span class="xs:hidden">{{ truncate(user.name, 7) }}</span>
 							<span class="hidden xs:block"
 								><span class="sm:hidden">{{
@@ -49,7 +49,7 @@
 							>
 							<span class="hidden sm:block">{{ truncate(user.name) }}</span>
 							<span
-								class="font-normal tracking-wide text-gray-400 ml-1"
+								class="ml-1 font-normal tracking-wide text-gray-400"
 								:class="{
 									'text-gray-800': index == 0,
 									'text-gray-300': index == 1,
@@ -58,14 +58,14 @@
 							>
 						</h3>
 						<div
-							class="rounded-2xl px-2 font-medium bg-rose-500 bg-opacity-50 inline-flex mt-1"
+							class="mt-1 inline-flex rounded-2xl bg-rose-500 bg-opacity-50 px-2 font-medium"
 						>
 							{{ format(user.xp) }} exp
 						</div>
 					</div>
 				</div>
 				<div class="relative flex items-center justify-center">
-					<svg class="h-10 w-10 rounded-full text-indigo-600 -rotate-90">
+					<svg class="h-10 w-10 -rotate-90 rounded-full text-indigo-600">
 						<circle
 							cx="16"
 							cy="16"

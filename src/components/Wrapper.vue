@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col min-h-screen md:px-0 bg-zinc-900">
+	<div class="flex min-h-screen flex-col bg-zinc-900 md:px-0">
 		<Navbar v-bind:navfixed="fixed"></Navbar>
 		<div class="flex-1 bg-zinc-850">
 			<div>
