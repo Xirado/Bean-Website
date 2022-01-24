@@ -1,74 +1,98 @@
 <template>
-	<div class="d-flex justify-center mb-6">
-		<v-list class="grey darken-3" min-width="90%">
-			<v-list-item-group>
-				<template v-for="(user, index) in users">
-					<v-list-item :key="user.id">
-						<v-avatar class="mx-3" size="40" :color="getColor(index)">
-							<span class="white--text caption">{{ index + 1 }}</span>
-						</v-avatar>
-						<v-list-item-avatar size="70">
-							<img v-if="user.avatar" :src="user.avatar" />
-							<img
-								v-if="!user.avatar"
-								:src="`https://cdn.discordapp.com/embed/avatars/${
-									Number(user.discriminator) % 5
-								}.png`"
-							/>
-						</v-list-item-avatar>
-
-						<v-list-item-content>
-							<v-row align="center" no-gutters>
-								<v-col cols="10" lg="10" md="6" sm="4" xs="2">
-									<span class="pl-2">
-										{{ user.name }}
-									</span>
-								</v-col>
-								<v-col class="text-right">
-									<div class="position: relative;">
-										<span
-											class="indigo--text text--lighten-3 mb-1"
-											style="display: table; margin: 0 auto; font-size: 80%"
-										>
-											Experience
-										</span>
-										<span
-											style="display: table; margin: 0 auto; font-size: 120%"
-										>
-											{{ format(user.xp) }}
-										</span>
-									</div>
-								</v-col>
-								<v-col class="text-right">
-									<v-progress-circular
-										color="indigo lighten-2"
-										:rotate="-90"
-										:size="70"
-										:value="getPercentage(user.xp)"
-									>
-										<div class="position: relative;">
-											<span
-												class="indigo--text text--lighten-3"
-												style="display: table; margin: 0 auto; font-size: 80%"
-											>
-												Level
-											</span>
-											<span
-												class="indigo--text text--lighten-1"
-												style="display: table; margin: 0 auto; font-size: 140%"
-											>
-												{{ getLevel(user.xp) }}
-											</span>
-										</div>
-									</v-progress-circular>
-								</v-col>
-							</v-row>
-						</v-list-item-content>
-						<v-list-item-action> </v-list-item-action>
-					</v-list-item>
-				</template>
-			</v-list-item-group>
-		</v-list>
+	<div
+		class="max-w-screen-lg px-4 w-full mx-auto -translate-y-56 sm:-translate-y-40 text-gray-200 space-y-4"
+	>
+		<template v-for="(user, index) in users">
+			<div
+				:key="index"
+				class="rounded-md shadow-md px-4 py-2 flex items-center justify-between"
+				:class="{
+					'bg-black/30': index != 0,
+					'bg-amber-500': index == 0,
+					'bg-zinc-500': index == 1,
+					'bg-amber-800': index == 2,
+					'mx-1 sm:mx-1': index == 1,
+					'mx-1 sm:mx-2': index == 2,
+					'mx-1 sm:mx-3': index != 0 && index != 1 && index != 2,
+				}"
+			>
+				<div class="flex items-center space-x-4">
+					<div
+						class="rounded-full shadow-2xl h-10 w-10 bg-black flex items-center justify-center"
+						:class="{
+							' bg-opacity-50': index == 0 || index == 1 || index == 2,
+							'bg-opacity-100': index != 0 && index != 1 && index != 2,
+						}"
+					>
+						<span
+							v-if="index != 0 && index != 1 && index != 2"
+							class="font-medium truncate"
+						>
+							{{ index + 1 }}
+						</span>
+						<span v-if="index == 0"> 🥇 </span>
+						<span v-if="index == 1"> 🥈 </span>
+						<span v-if="index == 2"> 🥉 </span>
+					</div>
+					<img
+						class="rounded-full h-14 w-14 bg-black bg-opacity-50 flex items-center justify-center"
+						v-if="user.avatar"
+						:src="user.avatar"
+					/>
+					<div class="">
+						<h3 class="text-xl font-medium flex flex-col sm:flex-row">
+							<span class="xs:hidden">{{ truncate(user.name, 7) }}</span>
+							<span class="hidden xs:block"
+								><span class="sm:hidden">{{
+									truncate(user.name, 20)
+								}}</span></span
+							>
+							<span class="hidden sm:block">{{ truncate(user.name) }}</span>
+							<span
+								class="font-normal tracking-wide text-gray-400 ml-1"
+								:class="{
+									'text-gray-800': index == 0,
+									'text-gray-300': index == 1,
+								}"
+								>#{{ user.discriminator }}</span
+							>
+						</h3>
+						<div
+							class="rounded-2xl px-2 font-medium bg-rose-500 bg-opacity-50 inline-flex mt-1"
+						>
+							{{ format(user.xp) }} exp
+						</div>
+					</div>
+				</div>
+				<div class="relative flex items-center justify-center">
+					<svg class="h-10 w-10 rounded-full text-indigo-600 -rotate-90">
+						<circle
+							cx="16"
+							cy="16"
+							r="16"
+							fill="none"
+							stroke="black"
+							stroke-dasharray="100"
+							stroke-dashoffset="0"
+							stroke-width="7"
+							class="opacity-70"
+						/>
+						<circle
+							cx="16"
+							cy="16"
+							r="16"
+							fill="none"
+							stroke="currentColor"
+							stroke-dasharray="100"
+							:stroke-dashoffset="100 - (100 * getPercentage(user.xp)) / 100"
+							stroke-width="7"
+							class="opacity-70"
+						/>
+					</svg>
+					<span class="absolute font-medium">{{ getLevel(user.xp) }}</span>
+				</div>
+			</div>
+		</template>
 	</div>
 </template>
 
@@ -84,10 +108,12 @@ export default {
 		},
 	},
 	methods: {
-		truncate(name) {
+		truncate(name, length) {
+			//css has truncating too, and its better bc its based on elm size rather than length
 			let string = String(name);
-			if (string.length > 41) {
-				return string.substring(0, 41) + "...";
+			const l = length || 41;
+			if (string.length > l) {
+				return string.substring(0, l + 1) + "...";
 			}
 			return string;
 		},

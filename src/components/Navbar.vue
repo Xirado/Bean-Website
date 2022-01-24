@@ -5,7 +5,7 @@
 	>
 		<div class="flex justify-between items-center mx-4 my-auto">
 			<router-link to="/" custom>
-				<img src="/img/bean.png" class="w-16" />
+				<img src="/img/bean.jpg" class="w-16" />
 			</router-link>
 			<div class="flex items-center space-x-7">
 				<button

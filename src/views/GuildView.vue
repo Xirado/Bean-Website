@@ -1,138 +1,129 @@
 <template>
 	<div>
-		<div v-if="data">
-			<v-breadcrumbs :items="items">
-				<template v-slot:item="{ item }">
-					<v-breadcrumbs-item :disabled="item.disabled" :to="item.href">
-						{{ item.text }}
-					</v-breadcrumbs-item>
-				</template>
-			</v-breadcrumbs>
-		</div>
-		<v-progress-linear
-			v-if="loading && !error"
-			indeterminate
-			color="indigo darken-2"
-		></v-progress-linear>
 		<div v-if="error">
-			<v-alert outlined type="error" elevation="2">
-				{{ error_message }}
-			</v-alert>
+			<ErrorMessage title="Error" :message="error_message" :red="true" />
+		</div>
+		<div v-if="(loading || !data) && !error">
+			<Wrapper> test </Wrapper>
 		</div>
 		<div v-if="data && !error">
-			<v-expansion-panels multiple popout>
-				<v-expansion-panel>
-					<v-expansion-panel-header> Logs </v-expansion-panel-header>
-					<v-expansion-panel-content>
-						<v-container fluid>
-							<v-row align="center" class="d-flex justify-start" no-gutters>
-								<v-col cols="4" class="flex-grow-0 flex-shrink-0">
-									<span class="grey--text darken-2">Logchannel</span>
-								</v-col>
-								<v-col
-									cols="8"
-									style="min-width: 100px"
-									class="flex-grow-0 flex-shrink-1"
-								>
-									<v-select
-										:items="getTextChannels()"
-										label="Channel"
-										v-model="log_channel"
-									></v-select>
-								</v-col>
-							</v-row>
-						</v-container>
-					</v-expansion-panel-content>
-				</v-expansion-panel>
-				<v-expansion-panel>
-					<v-expansion-panel-header> Music </v-expansion-panel-header>
-					<v-expansion-panel-content>
-						<v-container fluid>
-							<v-row align="center" class="d-flex justify-start" no-gutters>
-								<v-col cols="4" class="flex-grow-0 flex-shrink-0">
-									<span class="grey--text darken-2">DJ Roles</span>
-								</v-col>
-								<v-col
-									cols="8"
-									style="min-width: 100px"
-									class="flex-grow-0 flex-shrink-1"
-								>
-									<v-autocomplete
-										v-model="dj_roles"
-										:items="getRoles()"
-										outlined
-										dense
-										label="DJ Roles"
-										multiple
+			<Wrapper>
+				<v-expansion-panels multiple popout>
+					<v-expansion-panel>
+						<v-expansion-panel-header> Logs </v-expansion-panel-header>
+						<v-expansion-panel-content>
+							<v-container fluid>
+								<v-row align="center" class="d-flex justify-start" no-gutters>
+									<v-col cols="4" class="flex-grow-0 flex-shrink-0">
+										<span class="grey--text darken-2">Logchannel</span>
+									</v-col>
+									<v-col
+										cols="8"
+										style="min-width: 100px"
+										class="flex-grow-0 flex-shrink-1"
 									>
-										<template #selection="{ item }">
-											<v-chip :color="item.color" small outlined>
-												{{ item.text }}
-											</v-chip>
-										</template>
-									</v-autocomplete>
-								</v-col>
-							</v-row>
-							<v-row align="center" class="d-flex justify-start" no-gutters>
-								<v-col cols="4" class="flex-grow-0 flex-shrink-0">
-									<span class="grey--text darken-2"
-										>Allow volume above 100%</span
+										<v-select
+											:items="getTextChannels()"
+											label="Channel"
+											v-model="log_channel"
+										></v-select>
+									</v-col>
+								</v-row>
+							</v-container>
+						</v-expansion-panel-content>
+					</v-expansion-panel>
+					<v-expansion-panel>
+						<v-expansion-panel-header> Music </v-expansion-panel-header>
+						<v-expansion-panel-content>
+							<v-container fluid>
+								<v-row align="center" class="d-flex justify-start" no-gutters>
+									<v-col cols="4" class="flex-grow-0 flex-shrink-0">
+										<span class="grey--text darken-2">DJ Roles</span>
+									</v-col>
+									<v-col
+										cols="8"
+										style="min-width: 100px"
+										class="flex-grow-0 flex-shrink-1"
 									>
-								</v-col>
-								<v-col cols="2">
-									<v-switch v-model="allow_earrape"> </v-switch>
-								</v-col>
-							</v-row>
-						</v-container>
-					</v-expansion-panel-content>
-				</v-expansion-panel>
-				<v-expansion-panel>
-					<v-expansion-panel-header> Leveling </v-expansion-panel-header>
-					<v-expansion-panel-content>
-						<v-container fluid>
-							<v-row align="center" class="d-flex justify-start" no-gutters>
-								<v-col cols="4" class="flex-grow-0 flex-shrink-0">
-									<span class="grey--text darken-2">Disabled Channels</span>
-								</v-col>
-								<v-col
-									cols="8"
-									style="min-width: 100px"
-									class="flex-grow-0 flex-shrink-1"
-								>
-									<v-autocomplete
-										v-model="xp_disabled_channels"
-										:items="getTextChannelsRaw()"
-										outlined
-										dense
-										label="Disabled Channels"
-										multiple
+										<v-autocomplete
+											v-model="dj_roles"
+											:items="getRoles()"
+											outlined
+											dense
+											label="DJ Roles"
+											multiple
+										>
+											<template #selection="{ item }">
+												<v-chip :color="item.color" small outlined>
+													{{ item.text }}
+												</v-chip>
+											</template>
+										</v-autocomplete>
+									</v-col>
+								</v-row>
+								<v-row align="center" class="d-flex justify-start" no-gutters>
+									<v-col cols="4" class="flex-grow-0 flex-shrink-0">
+										<span class="grey--text darken-2"
+											>Allow volume above 100%</span
+										>
+									</v-col>
+									<v-col cols="2">
+										<v-switch v-model="allow_earrape"> </v-switch>
+									</v-col>
+								</v-row>
+							</v-container>
+						</v-expansion-panel-content>
+					</v-expansion-panel>
+					<v-expansion-panel>
+						<v-expansion-panel-header> Leveling </v-expansion-panel-header>
+						<v-expansion-panel-content>
+							<v-container fluid>
+								<v-row align="center" class="d-flex justify-start" no-gutters>
+									<v-col cols="4" class="flex-grow-0 flex-shrink-0">
+										<span class="grey--text darken-2">Disabled Channels</span>
+									</v-col>
+									<v-col
+										cols="8"
+										style="min-width: 100px"
+										class="flex-grow-0 flex-shrink-1"
 									>
-										<template #selection="{ item }">
-											<v-chip :color="item.color" small outlined>
-												{{ item.text }}
-											</v-chip>
-										</template>
-									</v-autocomplete>
-								</v-col>
-							</v-row>
-						</v-container>
-					</v-expansion-panel-content>
-				</v-expansion-panel>
-			</v-expansion-panels>
-			<v-divider class="my-4"></v-divider>
-			<v-btn
-				class="mx-2"
-				:disabled="has_updated ? false : true"
-				@click="updateGuild()"
-				color="success"
-			>
-				Save
-			</v-btn>
+										<v-autocomplete
+											v-model="xp_disabled_channels"
+											:items="getTextChannelsRaw()"
+											outlined
+											dense
+											label="Disabled Channels"
+											multiple
+										>
+											<template #selection="{ item }">
+												<v-chip :color="item.color" small outlined>
+													{{ item.text }}
+												</v-chip>
+											</template>
+										</v-autocomplete>
+									</v-col>
+								</v-row>
+							</v-container>
+						</v-expansion-panel-content>
+					</v-expansion-panel>
+				</v-expansion-panels>
+				<v-divider class="my-4"></v-divider>
+				<v-btn
+					class="mx-2"
+					:disabled="has_updated ? false : true"
+					@click="updateGuild()"
+					color="success"
+				>
+					Save
+				</v-btn>
+			</Wrapper>
 		</div>
 	</div>
 </template>
 
 <script>
+import ErrorMessage from "@/components/ErrorMessage.vue";
+import Wrapper from "@/components/Wrapper.vue";
 import axios from "axios";
 var json_bigint = require("json-bigint");
 var _ = require("lodash");
@@ -141,6 +132,10 @@ import { backend_url, logout } from "@/api/api.js";
 import Vue from "vue";
 export default {
 	name: "GuildView",
+	components: {
+		ErrorMessage,
+		Wrapper,
+	},
 	computed: {
 		dj_roles: {
 			get() {

@@ -5,6 +5,9 @@ module.exports = {
 			colors: {
 				"zinc-850": "#1b1b1f",
 			},
+			screens: {
+				xs: "362px",
+			},
 		},
 	},
 	plugins: [],

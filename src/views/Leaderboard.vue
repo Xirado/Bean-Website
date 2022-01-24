@@ -1,35 +1,47 @@
 <template>
-	<div>
-		<v-progress-linear
-			v-if="loading && !error"
-			indeterminate
-			color="indigo darken-2"
-		></v-progress-linear>
+	<div class="text-gray-100">
 		<div v-if="error">
-			<v-alert outlined type="error" elevation="2">
-				{{ error_message }}
-			</v-alert>
+			<ErrorMessage title="Error" :message="error_message" :red="true" />
 		</div>
-		<v-row v-if="guild" align="center mx-4 my-6 pb-10">
-			<v-avatar size="128">
-				<img v-if="guild.icon" :src="guild.icon" />
-			</v-avatar>
-			<span class="mx-8 my-12" style="font-size: 200%; font-weight: bold">
-				{{ guild.name }}
-			</span>
-		</v-row>
-		<div v-if="users">
-			<LeaderboardList :users="users" />
-		</div>
+		<Wrapper :fixed="!loading">
+			<div v-if="!loading && guild && users">
+				<div class="relative">
+					<div
+						class="[background-image:url('/img/universe.jpg')] h-[70vh] bg-cover bg-no-repeat bg-top flex"
+					>
+						<!--would be cool to do server banner here rather than the universe thing-->
+						<div
+							class="flex flex-col md:flex-row mx-auto max-w-screen-lg px-4 items-center w-full justify-center md:justify-start mb-28 sm:mb-8"
+						>
+							<img
+								:src="guild.icon"
+								alt=""
+								class="rounded-full h-20 md:h-28 md:mr-8 shadow-lg"
+							/>
+							<h1 class="text-5xl md:text-8xl font-medium text-white truncate">
+								{{ guild.name }}
+								<hr class="hidden md:block w-8 border-t-4 border-pink-600" />
+							</h1>
+						</div>
+					</div>
+					<div
+						class="bg-gradient-to-b from-transparent via-transparent to-zinc-850 inset-0 absolute"
+					></div>
+				</div>
+				<LeaderboardList :users="users" />
+			</div>
+		</Wrapper>
 	</div>
 </template>
 
 <script>
 import { fetchLeaderboard } from "@/api/api.js";
 import LeaderboardList from "../components/LeaderboardList.vue";
+import ErrorMessage from "../components/ErrorMessage.vue";
+import Wrapper from "../components/Wrapper.vue";
 
 export default {
-	components: { LeaderboardList },
+	components: { LeaderboardList, ErrorMessage, Wrapper },
 	data() {
 		return {
 			items: [

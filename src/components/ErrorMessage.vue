@@ -2,7 +2,8 @@
 	<Wrapper>
 		<div class="text-gray-100 flex flex-col">
 			<div
-				class="rounded-lg bg-indigo-600/20 mx-auto p-6 text-xl my-auto font-semibold mt-10 flex flex-col text-center min-w-[15rem]"
+				class="rounded-lg mx-auto p-6 text-xl my-auto shadow-xl font-semibold mt-10 flex flex-col text-center min-w-[15rem]"
+				:class="red ? 'bg-red-600/30' : 'bg-indigo-600/20'"
 			>
 				{{ title }}
 				<span class="text-lg font-normal text-gray-400">{{ message }}</span>
@@ -29,6 +30,7 @@ export default {
 		message: String,
 		title: String,
 		loading: Boolean,
+		red: Boolean,
 	},
 };
 </script>

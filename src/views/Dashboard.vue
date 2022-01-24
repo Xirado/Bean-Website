@@ -57,9 +57,7 @@
 						</button>
 					</a>
 					<router-link to="/">
-						<button class="btn rounded bg-zinc-900 px-4 py-2 tet-gray-400">
-							Home
-						</button>
+						<button class="btn rounded bg-zinc-900 px-4 py-2">Home</button>
 					</router-link>
 				</div>
 			</div>
