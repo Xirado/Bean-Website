@@ -1,0 +1,132 @@
+<section class="relative flex items-center overflow-hidden bg-gray-800">
+				<div class="mx-auto w-full max-w-screen-lg py-10 px-4">
+					<h2 class="center text-7xl font-bold tracking-wide">Servers</h2>
+					<p
+						class="mx-auto mt-2 -mb-6 max-w-xl truncate font-medium text-gray-400 sm:mb-10 lg:ml-0 lg:overflow-auto lg:whitespace-normal"
+					>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Feugiat
+						sed lectus vestibulum mattis. Arcu non odio euismod lacinia at quis
+						risus. Pulvinar neque laoreet suspendisse interdum consectetur
+						libero. Nibh sit amet commodo nulla facilisi nullam vehicula ipsum.
+					</p>
+					<button
+						class="btn-base invisible mt-24 rounded-md border border-gray-700 bg-white bg-opacity-5 px-4 py-2 font-semibold text-gray-200 transition duration-300 hover:border-gray-600 hover:bg-opacity-10 hover:brightness-105 hover:filter lg:visible"
+					>
+						See more servers
+					</button>
+					<div class="absolute right-0 bottom-0 p-10">
+						<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+							<div class="2xl:hidden"></div>
+							<div
+								class="group invisible hidden translate-x-44 cursor-pointer rounded-lg border border-gray-900 border-opacity-30 bg-gray-900 bg-opacity-10 p-4 font-semibold text-gray-200 transition duration-300 hover:border-gray-600 hover:border-opacity-10 hover:bg-opacity-10 hover:brightness-105 hover:filter lg:visible 2xl:block"
+							>
+								<div class="flex">
+									<figure
+										class="bg-img h-8 w-8 rounded-full bg-cover bg-center"
+									></figure>
+									<figcaption
+										class="ml-2 text-lg font-semibold group-hover:underline"
+									>
+										Server Name
+									</figcaption>
+								</div>
+								<p class="max-w-xs text-gray-300">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+									do...
+								</p>
+							</div>
+							<div
+								class="group invisible translate-x-44 cursor-pointer rounded-lg border border-gray-900 border-opacity-30 bg-gray-900 bg-opacity-10 p-4 font-semibold text-gray-200 transition duration-300 hover:border-gray-600 hover:border-opacity-10 hover:bg-opacity-10 hover:brightness-105 hover:filter lg:visible"
+							>
+								<div class="flex">
+									<figure
+										class="bg-img h-8 w-8 rounded-full bg-cover bg-center"
+									></figure>
+									<figcaption
+										class="ml-2 text-lg font-semibold group-hover:underline"
+									>
+										Server Name
+									</figcaption>
+								</div>
+								<p class="max-w-xs text-gray-300">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+									do...
+								</p>
+							</div>
+							<div
+								class="group invisible translate-x-44 cursor-pointer rounded-lg border border-gray-900 border-opacity-30 bg-gray-900 bg-opacity-10 p-4 font-semibold text-gray-200 transition duration-300 hover:border-gray-600 hover:border-opacity-10 hover:bg-opacity-10 hover:brightness-105 hover:filter lg:visible"
+							>
+								<div class="flex">
+									<figure
+										class="bg-img h-8 w-8 rounded-full bg-cover bg-center"
+									></figure>
+									<figcaption
+										class="ml-2 text-lg font-semibold group-hover:underline"
+									>
+										Server Name
+									</figcaption>
+								</div>
+								<p class="max-w-xs text-gray-300">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+									do...
+								</p>
+							</div>
+							<div
+								class="group invisible cursor-pointer rounded-lg border border-gray-900 border-opacity-30 bg-gray-900 bg-opacity-10 p-4 font-semibold text-gray-200 transition duration-300 hover:border-gray-600 hover:border-opacity-10 hover:bg-opacity-10 hover:brightness-105 hover:filter sm:visible lg:invisible xl:visible"
+							>
+								<div class="flex">
+									<figure
+										class="bg-img h-8 w-8 rounded-full bg-cover bg-center"
+									></figure>
+									<figcaption
+										class="ml-2 text-lg font-semibold group-hover:underline"
+									>
+										Server Name
+									</figcaption>
+								</div>
+								<p class="max-w-xs text-gray-300">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+									do...
+								</p>
+							</div>
+							<div
+								class="group cursor-pointer rounded-lg border border-gray-900 border-opacity-30 bg-gray-900 bg-opacity-10 p-4 font-semibold text-gray-200 transition duration-300 hover:border-gray-600 hover:border-opacity-10 hover:bg-opacity-10 hover:brightness-105 hover:filter"
+							>
+								<div class="flex">
+									<figure
+										class="bg-img h-8 w-8 rounded-full bg-cover bg-center"
+									></figure>
+									<figcaption
+										class="ml-2 text-lg font-semibold group-hover:underline"
+									>
+										Server Name
+									</figcaption>
+								</div>
+								<p class="hidden max-w-xs text-gray-300 sm:block">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+									do...
+								</p>
+							</div>
+							<div
+								class="group cursor-pointer rounded-lg border border-gray-900 border-opacity-30 bg-gray-900 bg-opacity-10 p-4 font-semibold text-gray-200 transition duration-300 hover:border-gray-600 hover:border-opacity-10 hover:bg-opacity-10 hover:brightness-105 hover:filter"
+							>
+								<div class="flex">
+									<figure
+										class="bg-img h-8 w-8 rounded-full bg-cover bg-center"
+									></figure>
+									<figcaption
+										class="ml-2 text-lg font-semibold group-hover:underline"
+									>
+										Server Name
+									</figcaption>
+								</div>
+								<p class="hidden max-w-xs text-gray-300 sm:block">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+									do...
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>

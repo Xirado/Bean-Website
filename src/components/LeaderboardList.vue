@@ -64,32 +64,34 @@
 						</div>
 					</div>
 				</div>
-				<div class="relative flex items-center justify-center">
-					<svg class="h-10 w-10 -rotate-90 rounded-full text-indigo-600">
-						<circle
-							cx="16"
-							cy="16"
-							r="16"
-							fill="none"
-							stroke="black"
-							stroke-dasharray="100"
-							stroke-dashoffset="0"
-							stroke-width="7"
-							class="opacity-70"
-						/>
-						<circle
-							cx="16"
-							cy="16"
-							r="16"
-							fill="none"
-							stroke="currentColor"
-							stroke-dasharray="100"
-							:stroke-dashoffset="100 - (100 * getPercentage(user.xp)) / 100"
-							stroke-width="7"
-							class="opacity-70"
-						/>
-					</svg>
-					<span class="absolute font-medium">{{ getLevel(user.xp) }}</span>
+				<div class="relative h-10 w-10">
+					<div class="absolute inset-0">
+						<svg
+							class="aspect-square -rotate-90"
+							style="--stroke: 12"
+							:style="'--val: ' + getPercentage(user.xp)"
+							viewBox="0 0 120 120"
+						>
+							<circle
+								class="stroke-black/75 stroke-[number:var(--stroke)]"
+								cx="60"
+								cy="60"
+								r="48"
+								fill="none"
+							/>
+							<circle
+								class="stroke-indigo-600 stroke-[number:calc(1+var(--stroke))] transition-[stroke-dashoffset] duration-500 [stroke-dasharray:100] [stroke-dashoffset:calc(100-var(--val))]"
+								cx="60"
+								cy="60"
+								r="48"
+								fill="none"
+								pathLength="100"
+							/>
+						</svg>
+					</div>
+					<div class="grid h-full place-items-center font-medium leading-[0.7]">
+						{{ getLevel(user.xp) }}
+					</div>
 				</div>
 			</div>
 		</template>
