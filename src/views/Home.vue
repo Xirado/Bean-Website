@@ -1,5 +1,5 @@
 <template>
-	<Wrapper v-bind:fixed="true">
+	<Wrapper v-bind:fixed="true" :white="true">
 		<div class="flex min-h-screen flex-col bg-white text-gray-200">
 			<section class="flex h-screen flex-col">
 				<div
@@ -102,7 +102,7 @@
 					bg="bg-cyan-50"
 					title="Leveling"
 					:right="true"
-					btn="Make your server active"
+					btn="Level up your server"
 					img="https://cdn.discordapp.com/attachments/753296801464844398/930889290760744970/unknown.png"
 				>
 					Bean comes with powerful moderation commands that blah blah blah blah

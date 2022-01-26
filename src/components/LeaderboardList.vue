@@ -44,7 +44,7 @@
 							<span class="xs:hidden">{{ truncate(user.name, 7) }}</span>
 							<span class="hidden xs:block"
 								><span class="sm:hidden">{{
-									truncate(user.name, 20)
+									truncate(user.name, 17)
 								}}</span></span
 							>
 							<span class="hidden sm:block">{{ truncate(user.name) }}</span>

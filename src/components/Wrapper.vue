@@ -6,16 +6,17 @@
 				<slot></slot>
 			</div>
 		</div>
-		<!-- footer here -->
+		<Footer :white="white" />
 	</div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default {
 	name: "Wrapper",
-	components: { Navbar },
-	props: ["fixed"],
+	components: { Navbar, Footer },
+	props: ["fixed", "white"],
 };
 </script>
