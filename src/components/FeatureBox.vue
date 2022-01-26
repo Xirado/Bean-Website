@@ -4,13 +4,13 @@
 		:class="{ 'lg:flex-row-reverse': right, 'lg:flex-row': !right }"
 	>
 		<div
-			class="relative max-w-sm rounded-lg p-7 shadow-2xl"
+			class="relative flex max-w-sm flex-col rounded-lg p-7 shadow-2xl"
 			:class="bg + ' ' + text + ' ' + shadow"
 		>
 			<h3 class="mb-2 text-2xl font-semibold">{{ title }}</h3>
 			<slot></slot>
 			<button
-				class="btn absolute -bottom-5 -right-12 max-w-[15rem] rounded bg-indigo-600 px-4 py-2 font-semibold text-gray-50 shadow-xl shadow-indigo-600/20"
+				class="btn -bottom-5 -right-12 mt-4 rounded bg-indigo-600 px-4 py-2 font-semibold text-gray-50 shadow-xl shadow-indigo-600/20 sm:absolute sm:mx-0 sm:mt-0 xs:mx-auto xs:max-w-[15rem]"
 			>
 				{{ btn || "Add to Discord" }}
 			</button>

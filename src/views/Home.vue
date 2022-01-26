@@ -94,7 +94,7 @@
 				</div>
 			</section>
 			<section
-				class="mx-auto my-10 w-full max-w-screen-lg space-y-16 px-4 text-gray-800"
+				class="mx-auto my-10 w-full max-w-screen-lg space-y-24 px-4 text-gray-800"
 			>
 				<FeatureBox
 					shadow="shadow-cyan-700/20"
@@ -122,12 +122,14 @@
 					blah blah
 				</FeatureBox>
 			</section>
-			<section class="relative overflow-hidden bg-gray-800 py-16">
+			<section
+				class="relative mt-8 flex h-80 justify-center overflow-hidden bg-gray-800 py-16 sm:block"
+			>
 				<div
-					class="mx-auto flex w-full max-w-screen-lg flex-col items-center px-4"
+					class="absolute z-10 mx-auto flex w-min max-w-screen-lg flex-col items-center rounded-md bg-white/25 p-4 px-4 sm:static sm:w-full sm:bg-transparent sm:p-0"
 				>
 					<h2 class="text-6xl font-medium">Convinced?</h2>
-					<p class="font-gray-300 mt-2 text-lg">
+					<p class="font-gray-300 mt-2 text-center text-lg">
 						Personalize and grow your server with the next generation of discord
 						bots
 					</p>
@@ -137,17 +139,21 @@
 						Add to discord
 					</button>
 				</div>
+				<!--bottom right-->
 				<div
-					class="absolute top-36 -left-48 h-[40rem] w-[40rem] rounded-full bg-gradient-to-bl from-emerald-500 via-indigo-600 to-indigo-600"
+					class="absolute top-48 -left-48 h-[40rem] w-[40rem] rounded-full bg-gradient-to-bl from-emerald-500 via-indigo-600 to-indigo-600 md:top-36"
 				></div>
+				<!--top right-->
 				<div
-					class="absolute bottom-36 -right-48 h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-emerald-500 via-emerald-600 to-indigo-600"
+					class="absolute bottom-36 -right-96 hidden h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-emerald-500 via-emerald-600 to-indigo-600 md:-right-64 lg:-right-48 xs:block"
 				></div>
+				<!--bottom middle right-->
 				<div
-					class="absolute right-96 h-[40rem] w-[40rem] rounded-full bg-gradient-to-bl from-emerald-500 via-cyan-500 to-indigo-600"
+					class="absolute right-96 hidden h-[40rem] w-[40rem] rounded-full bg-gradient-to-bl from-emerald-500 via-cyan-500 to-indigo-600 md:block"
 				></div>
+				<!--top left-->
 				<div
-					class="absolute bottom-48 left-64 h-72 w-72 rounded-full bg-gradient-to-br from-lime-500 via-green-500 to-indigo-600"
+					class="absolute bottom-48 hidden h-72 w-72 rounded-full bg-gradient-to-br from-lime-500 via-green-500 to-indigo-600 sm:block lg:left-64"
 				></div>
 			</section>
 		</div>
