@@ -7,11 +7,11 @@
 			<div
 				class="mx-auto flex max-w-screen-lg flex-col justify-between px-4 sm:flex-row"
 			>
-				<div class="mb-8 sm:mb-0">
-					<h2 class="text-center text-5xl font-semibold md:text-left">
+				<div class="mb-8 sm:mb-0 flex flex-col">
+					<h2 class="text-center text-5xl font-semibold md:text-left sm:mx-0">
 						Bean Discord Bot
 					</h2>
-					<ul class="mt-3 flex font-mono text-lg mx-auto sm:mx-0">
+					<ul class="mx-auto mt-3 flex font-mono text-lg">
 						<li class="mx-1 hover:underline"><a href="#">Discord</a></li>
 						<li>•</li>
 						<li class="mx-1 hover:underline"><a href="#">Facebook</a></li>
@@ -19,20 +19,16 @@
 						<li class="mx-1 hover:underline">
 							<a href="#">Myspace</a>
 						</li>
-						<li>•</li>
-						<li class="mx-1 hover:underline">
-							<a href="#">4chan</a>
-						</li>
 					</ul>
 					<a href="https://discord.gg/yrwUpMcfcR">
 						<div
-							class="mt-5 rounded-md bg-gray-800 py-1 px-10 text-center font-mono text-gray-200 shadow-lg "
+							class="mt-5 rounded-md bg-gray-800 py-1 px-10 text-center font-mono text-gray-200 shadow-lg"
 						>
 							Crafted by Wave Studios
 						</div>
 					</a>
 				</div>
-				<div class="flex gap-14 font-mono mx-auto sm:mx-0">
+				<div class="mx-auto xs:flex space-y-4 xs:space-y-0 gap-14 font-mono sm:mx-0">
 					<section>
 						<h3 class="mb-1 text-lg font-bold">Title</h3>
 						<ul :class="white ? 'text-gray-700' : 'text-gray-300'">

@@ -11,7 +11,7 @@
 				<button
 					href="https://discord.gg/7WEjttJtKa"
 					target="_blank"
-					class="group p-1 font-medium"
+					class="group p-1 font-medium hidden sm:block"
 				>
 					<span>Support Server</span>
 					<hr
@@ -22,7 +22,7 @@
 					:href="invite_link"
 					target="_blank"
 					color="indigo"
-					class="group p-1 font-medium"
+					class="group p-1 font-medium hidden sm:block"
 				>
 					<span>{{ loggedIn ? "Manage servers" : "Add to Server" }}</span>
 					<hr
@@ -32,11 +32,13 @@
 
 				<button
 					v-if="!loggedIn"
-					class="rounded border border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20"
+					class="rounded border hidden sm:block border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20"
 					:to="login_link"
 				>
 					<span>Login</span>
 				</button>
+				<button class="bg-zinc-700 hover:opacity-70 px-2 py-1 rounded-sm md:hidden focus:outline-none" :class="drawer ? 'opacity-70' : '' " @click="drawer = !drawer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-auto "><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-auto hidden"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+				{{ drawer }}
 				<button
 					v-if="user !== null && loggedIn"
 					@click="drawer = !drawer"

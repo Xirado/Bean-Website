@@ -123,10 +123,10 @@
 				</FeatureBox>
 			</section>
 			<section
-				class="relative mt-8 flex h-80 justify-center overflow-hidden bg-gray-800 py-16 sm:block"
+				class="relative mt-8 flex h-80 justify-center  overflow-hidden bg-gray-800 py-16 sm:block"
 			>
 				<div
-					class="absolute z-10 mx-auto flex w-min max-w-screen-lg flex-col items-center rounded-md bg-white/25 p-4 px-4 sm:static sm:w-full sm:bg-transparent sm:p-0"
+					class="absolute z-20 mx-auto flex w-min flex-col items-center rounded-md bg-white/25 p-4 px-4 sm:w-full sm:bg-transparent sm:p-0"
 				>
 					<h2 class="text-6xl font-medium">Convinced?</h2>
 					<p class="font-gray-300 mt-2 text-center text-lg">
@@ -149,7 +149,7 @@
 				></div>
 				<!--bottom middle right-->
 				<div
-					class="absolute right-96 hidden h-[40rem] w-[40rem] rounded-full bg-gradient-to-bl from-emerald-500 via-cyan-500 to-indigo-600 md:block"
+					class="absolute right-96 top-56 hidden h-[40rem] w-[40rem] rounded-full bg-gradient-to-bl from-emerald-500 via-cyan-500 to-indigo-600 md:block"
 				></div>
 				<!--top left-->
 				<div
