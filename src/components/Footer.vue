@@ -7,8 +7,8 @@
 			<div
 				class="mx-auto flex max-w-screen-lg flex-col justify-between px-4 sm:flex-row"
 			>
-				<div class="mb-8 sm:mb-0 flex flex-col">
-					<h2 class="text-center text-5xl font-semibold md:text-left sm:mx-0">
+				<div class="mb-8 flex flex-col sm:mb-0">
+					<h2 class="text-center text-5xl font-semibold sm:mx-0 md:text-left">
 						Bean Discord Bot
 					</h2>
 					<ul class="mx-auto mt-3 flex font-mono text-lg">
@@ -28,7 +28,9 @@
 						</div>
 					</a>
 				</div>
-				<div class="mx-auto xs:flex space-y-4 xs:space-y-0 gap-14 font-mono sm:mx-0">
+				<div
+					class="mx-auto gap-14 space-y-4 font-mono sm:mx-0 xs:flex xs:space-y-0"
+				>
 					<section>
 						<h3 class="mb-1 text-lg font-bold">Title</h3>
 						<ul :class="white ? 'text-gray-700' : 'text-gray-300'">

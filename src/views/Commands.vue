@@ -4,7 +4,7 @@
 			<h1 class="mb-3 text-4xl font-semibold tracking-wider">Commands List</h1>
 			<!--Arguments info box-->
 			<div
-				class="xs:sticky top-20 z-30 mx-3 flex items-center rounded-md bg-indigo-600/20 p-4 text-lg font-medium tracking-wide shadow-xl backdrop-blur-xl"
+				class="top-20 z-30 mx-3 flex items-center rounded-md bg-indigo-600/20 p-4 text-lg font-medium tracking-wide shadow-xl backdrop-blur-xl xs:sticky"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

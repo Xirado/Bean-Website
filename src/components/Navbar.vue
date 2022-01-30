@@ -3,58 +3,94 @@
 		class="top-0 z-30 w-full bg-zinc-900 bg-opacity-60 px-1 py-1 text-gray-100 backdrop-blur backdrop-filter"
 		v-bind:class="{ fixed: navfixed, sticky: !navfixed }"
 	>
-		<div class="mx-4 my-auto flex items-center justify-between">
-			<router-link to="/" custom>
-				<img src="/img/bean.jpg" class="w-16" />
-			</router-link>
-			<div class="flex items-center space-x-7">
-				<button
+		<div
+			class="mx-4 my-auto flex flex-col items-center justify-between md:flex-row"
+			:class="{ 'divide-y divide-zinc-700 divide-opacity-40 md:divide-y-0': navOpen }"
+		>
+			<div class="flex w-full items-center justify-between">
+				<router-link to="/" custom>
+					<img src="/img/bean.jpg" class="w-16" />
+				</router-link>
+				<div
+					class="rounded-sm bg-zinc-700 px-2 py-1 md:hidden"
+					:class="navOpen ? 'opacity-50' : ''"
+					@click="navOpen = !navOpen"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						class="h-auto w-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16m-7 6h7"
+						></path></svg
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						class="hidden h-auto w-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M6 18L18 6M6 6l12 12"
+						></path>
+					</svg>
+				</div>
+			</div>
+
+			<div class="flex flex-col md:flex-row w-full md:flex-auto items-center justify-center md:space-y-0 md:justify-end md:space-x-7" :class="navOpen ? '' : 'hidden md:flex'">
+				
+				<a
 					href="https://discord.gg/7WEjttJtKa"
 					target="_blank"
-					class="group p-1 font-medium hidden sm:block"
+					class="group p-1 font-medium"
+					
 				>
 					<span>Support Server</span>
 					<hr
 						class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 					/>
-				</button>
-				<button
+				</a>
+				<a
 					:href="invite_link"
 					target="_blank"
 					color="indigo"
-					class="group p-1 font-medium hidden sm:block"
+					class="group p-1 font-medium mb-2"
 				>
 					<span>{{ loggedIn ? "Manage servers" : "Add to Server" }}</span>
 					<hr
 						class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 					/>
-				</button>
+				</a>
 
 				<button
 					v-if="!loggedIn"
-					class="rounded border hidden sm:block border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20"
+					class="w-full md:w-auto rounded border border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20 sm:block"
 					:to="login_link"
 				>
 					<span>Login</span>
 				</button>
-				<button class="bg-zinc-700 hover:opacity-70 px-2 py-1 rounded-sm md:hidden focus:outline-none" :class="drawer ? 'opacity-70' : '' " @click="drawer = !drawer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-auto "><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-auto hidden"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-				{{ drawer }}
 				<button
 					v-if="user !== null && loggedIn"
 					@click="drawer = !drawer"
 					class="btn h-10 w-10 rounded-full ring ring-indigo-600 ring-opacity-0 transition hover:ring-opacity-40 focus:ring-opacity-100"
 				>
-					<img
-						src="https://cdn.discordapp.com/avatars/423258218035150849/ab4f33f6d8a87f58fd95468696d71507.png"
-						class="rounded-full"
-					/>
+					<img :src="user.effective_avatar" class="rounded-full" />
 				</button>
 				<div
 					v-if="drawer"
 					class="absolute right-4 top-20 rounded-md bg-zinc-800 p-6"
 				>
 					<img
-						src="https://cdn.discordapp.com/avatars/423258218035150849/ab4f33f6d8a87f58fd95468696d71507.png"
+						:src="user.effective_avatar"
 						class="mx-auto mb-3 h-10 w-10 rounded-full"
 					/>
 					<h3 class="text-xl font-medium tracking-wide">
@@ -111,6 +147,7 @@ export default {
 		return {
 			user: null,
 			drawer: false,
+			navOpen: false,
 			loggedIn: false,
 			login_link: null,
 			invite_link: null,

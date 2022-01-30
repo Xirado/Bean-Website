@@ -1,6 +1,6 @@
 <template>
 	<Wrapper v-bind:fixed="true" :white="true">
-		<div class="flex min-h-screen flex-col bg-white text-gray-200">
+		<div class="flex min-h-screen flex-col bg-white text-gray-200 bg-grid">
 			<section class="flex h-screen flex-col">
 				<div
 					class="flex h-auto flex-grow bg-zinc-800 bg-cover bg-center bg-no-repeat [background-image:url('https://thehill.com/sites/default/files/ca_earth_from_space_istock.jpg')]"
@@ -8,7 +8,7 @@
 					<div
 						class="mx-auto mt-auto mb-auto flex w-full max-w-screen-lg justify-between px-4"
 					>
-						<div class="mb-24 flex flex-col">
+						<div class="mb-40 flex flex-col md:mb-28">
 							<h1 class="max-w-xs text-4xl font-semibold text-gray-50">
 								The discord bot for something
 							</h1>
@@ -123,23 +123,25 @@
 				</FeatureBox>
 			</section>
 			<section
-				class="relative mt-8 flex h-80 justify-center  overflow-hidden bg-gray-800 py-16 sm:block"
+				class="relative mt-8 flex h-80 justify-center overflow-hidden bg-gray-800 py-16 sm:block"
 			>
 				<div
-					class="absolute z-20 mx-auto flex w-min flex-col items-center rounded-md bg-white/25 p-4 px-4 sm:w-full sm:bg-transparent sm:p-0"
+					class="absolute z-20 mx-auto flex w-min flex-col items-center rounded-md bg-black/10 p-4 px-4 sm:w-full sm:bg-transparent sm:p-0 backdrop-blur-sm sm:backdrop-blur-none border sm:border-0 border-white/20"
 				>
 					<h2 class="text-6xl font-medium">Convinced?</h2>
 					<p class="font-gray-300 mt-2 text-center text-lg">
 						Personalize and grow your server with the next generation of discord
 						bots
 					</p>
+					<a>
 					<button
 						class="btn mt-6 rounded bg-indigo-600 px-5 py-3 text-lg font-medium text-gray-100"
 					>
 						Add to discord
 					</button>
+					</a>
 				</div>
-				<!--bottom right-->
+				<!--bottom left-->
 				<div
 					class="absolute top-48 -left-48 h-[40rem] w-[40rem] rounded-full bg-gradient-to-bl from-emerald-500 via-indigo-600 to-indigo-600 md:top-36"
 				></div>
@@ -147,13 +149,13 @@
 				<div
 					class="absolute bottom-36 -right-96 hidden h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-emerald-500 via-emerald-600 to-indigo-600 md:-right-64 lg:-right-48 xs:block"
 				></div>
-				<!--bottom middle right-->
+				<!--bottom middle left-->
 				<div
-					class="absolute right-96 top-56 hidden h-[40rem] w-[40rem] rounded-full bg-gradient-to-bl from-emerald-500 via-cyan-500 to-indigo-600 md:block"
+					class="absolute right-96 top-56 hidden h-[40rem] w-[40rem] rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-indigo-600 md:block"
 				></div>
 				<!--top left-->
 				<div
-					class="absolute bottom-48 hidden h-72 w-72 rounded-full bg-gradient-to-br from-lime-500 via-green-500 to-indigo-600 sm:block lg:left-64"
+					class="absolute bottom-48 hidden h-72 w-72 rounded-full bg-gradient-to-br rotate-[110deg] from-lime-500 via-green-500 to-indigo-600 sm:block lg:left-64"
 				></div>
 			</section>
 		</div>

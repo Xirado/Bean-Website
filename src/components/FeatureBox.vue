@@ -9,11 +9,11 @@
 		>
 			<h3 class="mb-2 text-2xl font-semibold">{{ title }}</h3>
 			<slot></slot>
-			<button
+			<a
 				class="btn -bottom-5 -right-12 mt-4 rounded bg-indigo-600 px-4 py-2 font-semibold text-gray-50 shadow-xl shadow-indigo-600/20 sm:absolute sm:mx-0 sm:mt-0 xs:mx-auto xs:max-w-[15rem]"
 			>
 				{{ btn || "Add to Discord" }}
-			</button>
+			</a>
 		</div>
 		<figcaption>
 			<img

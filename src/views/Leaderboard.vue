@@ -16,9 +16,11 @@
 							<img
 								:src="guild.icon"
 								alt=""
-								class="h-20 rounded-full shadow-lg md:mr-8 "
+								class="h-20 rounded-full shadow-lg md:mr-8"
 							/>
-							<h1 class="text-center md:text-left text-5xl font-medium text-white md:text-6xl break-words w-screen max-h-36 overflow-hidden md:overflow-visible md:truncate">
+							<h1
+								class="max-h-36 w-screen overflow-hidden break-words text-center text-5xl font-medium text-white md:overflow-visible md:truncate md:text-left md:text-6xl"
+							>
 								{{ guild.name }}
 								<hr class="hidden w-8 border-t-4 border-pink-600 md:block" />
 							</h1>

@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="mx-auto w-full max-w-screen-lg space-y-4 px-4 text-gray-200 -translate-y-40"
+		class="mx-auto w-full max-w-screen-lg -translate-y-40 space-y-4 px-4 text-gray-200"
 	>
 		<template v-for="(user, index) in users">
 			<div
