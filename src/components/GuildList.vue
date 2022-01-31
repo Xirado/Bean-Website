@@ -20,13 +20,13 @@
 					>
 						<span class="text-lg font-medium">{{ guild.initials }}</span>
 					</div>
-
-					<button
-						v-if="guild.bot_joined"
-						class="btn ml-auto rounded bg-green-600 px-4 py-2 text-lg font-medium transition duration-200 group-hover:bg-green-500"
-					>
-						Dashboard
-					</button>
+					<a v-if="guild.bot_joined">
+						<button
+							class="btn ml-auto rounded bg-green-600 px-4 py-2 text-lg font-medium transition duration-200 group-hover:bg-green-500"
+						>
+							Dashboard
+						</button>
+					</a>
 					<a v-else>
 						<button
 							class="btn ml-auto rounded bg-indigo-600 px-4 py-2 text-lg font-medium transition duration-200 group-hover:bg-indigo-500"

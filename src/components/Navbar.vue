@@ -5,7 +5,9 @@
 	>
 		<div
 			class="mx-4 my-auto flex flex-col items-center justify-between md:flex-row"
-			:class="{ 'divide-y divide-zinc-700 divide-opacity-40 md:divide-y-0': navOpen }"
+			:class="{
+				'divide-y divide-zinc-700 divide-opacity-40 md:divide-y-0': navOpen,
+			}"
 		>
 			<div class="flex w-full items-center justify-between">
 				<router-link to="/" custom>
@@ -46,13 +48,14 @@
 				</div>
 			</div>
 
-			<div class="flex flex-col md:flex-row w-full md:flex-auto items-center justify-center md:space-y-0 md:justify-end md:space-x-7" :class="navOpen ? '' : 'hidden md:flex'">
-				
+			<div
+				class="flex w-full flex-col items-center justify-center md:flex-auto md:flex-row md:justify-end md:space-y-0 md:space-x-7"
+				:class="navOpen ? '' : 'hidden md:flex'"
+			>
 				<a
 					href="https://discord.gg/7WEjttJtKa"
 					target="_blank"
 					class="group p-1 font-medium"
-					
 				>
 					<span>Support Server</span>
 					<hr
@@ -63,7 +66,7 @@
 					:href="invite_link"
 					target="_blank"
 					color="indigo"
-					class="group p-1 font-medium mb-2"
+					class="group mb-2 p-1 font-medium"
 				>
 					<span>{{ loggedIn ? "Manage servers" : "Add to Server" }}</span>
 					<hr
@@ -73,7 +76,7 @@
 
 				<button
 					v-if="!loggedIn"
-					class="w-full md:w-auto rounded border border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20 sm:block"
+					class="w-full rounded border border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20 sm:block md:w-auto"
 					:to="login_link"
 				>
 					<span>Login</span>

@@ -1,17 +1,22 @@
 <template>
-	<div :class="white ? 'bg-white' : 'bg-black'" class="">
-		<div
-			:class="white ? 'bg-grid text-gray-800' : 'text-gray-200'"
-			class="py-14"
-		>
+	<div
+		:class="
+			white ? 'bg-grid bg-white text-gray-800' : 'bg-black text-gray-200 '
+		"
+		class=""
+	>
+		<div :class="compact ? 'py-4' : 'py-14'">
 			<div
 				class="mx-auto flex max-w-screen-lg flex-col justify-between px-4 sm:flex-row"
 			>
 				<div class="mb-8 flex flex-col sm:mb-0">
-					<h2 class="text-center text-5xl font-semibold sm:mx-0 md:text-left">
+					<h2
+						class="text-center font-semibold sm:mx-0 md:text-left"
+						:class="compact ? 'text-3xl' : 'text-5xl'"
+					>
 						Bean Discord Bot
 					</h2>
-					<ul class="mx-auto mt-3 flex font-mono text-lg">
+					<ul class="mx-auto mt-3 flex font-mono text-lg md:mx-0">
 						<li class="mx-1 hover:underline"><a href="#">Discord</a></li>
 						<li>•</li>
 						<li class="mx-1 hover:underline"><a href="#">Facebook</a></li>
@@ -22,7 +27,8 @@
 					</ul>
 					<a href="https://discord.gg/yrwUpMcfcR">
 						<div
-							class="mt-5 rounded-md bg-gray-800 py-1 px-10 text-center font-mono text-gray-200 shadow-lg"
+							class="rounded-md bg-gray-800 py-1 px-10 text-center font-mono text-gray-200 shadow-lg"
+							:class="compact ? 'mt-2' : 'mt-5'"
 						>
 							Crafted by Wave Studios
 						</div>
@@ -64,7 +70,10 @@
 <script>
 export default {
 	name: "Footer",
-	props: ["white"],
+	props: {
+		white: Boolean,
+		compact: Boolean,
+	},
 	data() {
 		return {};
 	},

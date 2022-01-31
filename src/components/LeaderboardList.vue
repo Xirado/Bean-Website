@@ -5,7 +5,7 @@
 		<template v-for="(user, index) in users">
 			<div
 				:key="index"
-				class="flex items-center justify-between rounded-md px-4 py-2 shadow-md"
+				class="group flex items-center justify-between rounded-md px-4 py-2 shadow-md"
 				:class="{
 					'bg-black/30': index != 0,
 					'bg-amber-500': index == 0,
@@ -58,9 +58,12 @@
 							>
 						</h3>
 						<div
-							class="mt-1 inline-flex rounded-2xl bg-rose-500 bg-opacity-50 px-2 font-medium"
+							class="mt-1 inline-flex rounded-2xl bg-rose-500 bg-opacity-50 px-2 font-medium transition-all group-hover:cursor-pointer group-hover:bg-rose-600/70"
 						>
-							{{ format(user.xp) }} exp
+							<span class="sm:group-hover:hidden">
+								{{ format(user.xp) + " exp" }}
+							</span>
+							<span class="hidden sm:group-hover:block"> Reset exp </span>
 						</div>
 					</div>
 				</div>

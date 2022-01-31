@@ -1,6 +1,6 @@
 <template>
 	<Wrapper v-bind:fixed="true" :white="true">
-		<div class="flex min-h-screen flex-col bg-white text-gray-200 bg-grid">
+		<div class="bg-grid flex min-h-screen flex-col bg-white text-gray-200">
 			<section class="flex h-screen flex-col">
 				<div
 					class="flex h-auto flex-grow bg-zinc-800 bg-cover bg-center bg-no-repeat [background-image:url('https://thehill.com/sites/default/files/ca_earth_from_space_istock.jpg')]"
@@ -16,7 +16,7 @@
 							<div class="mt-8 flex">
 								<router-link to="/dashboard">
 									<button
-										class="hover:bg-opacity-ss90 mr-3 inline-flex rounded bg-indigo-600 px-4 py-2 font-medium text-gray-100 transition duration-300 hover:bg-indigo-700"
+										class="mr-3 inline-flex rounded bg-indigo-600 px-4 py-2 font-medium text-gray-100 shadow-xl shadow-indigo-600/20 transition duration-300 hover:bg-indigo-700 hover:shadow-indigo-600/30"
 									>
 										Manage Servers
 									</button> </router-link
@@ -126,7 +126,7 @@
 				class="relative mt-8 flex h-80 justify-center overflow-hidden bg-gray-800 py-16 sm:block"
 			>
 				<div
-					class="absolute z-20 mx-auto flex w-min flex-col items-center rounded-md bg-black/10 p-4 px-4 sm:w-full sm:bg-transparent sm:p-0 backdrop-blur-sm sm:backdrop-blur-none border sm:border-0 border-white/20"
+					class="absolute z-20 mx-auto flex w-min flex-col items-center rounded-md border border-white/20 bg-black/10 p-4 px-4 backdrop-blur-sm sm:w-full sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none"
 				>
 					<h2 class="text-6xl font-medium">Convinced?</h2>
 					<p class="font-gray-300 mt-2 text-center text-lg">
@@ -134,11 +134,11 @@
 						bots
 					</p>
 					<a>
-					<button
-						class="btn mt-6 rounded bg-indigo-600 px-5 py-3 text-lg font-medium text-gray-100"
-					>
-						Add to discord
-					</button>
+						<button
+							class="btn mt-6 rounded bg-indigo-600 px-5 py-3 text-lg font-medium text-gray-100"
+						>
+							Add to discord
+						</button>
 					</a>
 				</div>
 				<!--bottom left-->
@@ -155,7 +155,7 @@
 				></div>
 				<!--top left-->
 				<div
-					class="absolute bottom-48 hidden h-72 w-72 rounded-full bg-gradient-to-br rotate-[110deg] from-lime-500 via-green-500 to-indigo-600 sm:block lg:left-64"
+					class="absolute bottom-48 hidden h-72 w-72 rotate-[110deg] rounded-full bg-gradient-to-br from-lime-500 via-green-500 to-indigo-600 sm:block lg:left-64"
 				></div>
 			</section>
 		</div>

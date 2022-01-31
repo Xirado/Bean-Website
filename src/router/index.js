@@ -2,13 +2,16 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 const Home = () => import("@/views/Home");
-const Dashboard = () => import("@/views/Dashboard");
+const Dashboard = () => import("@/views/dash/Dashboard");
 const Documentation = () => import("@/views/Documentation");
 const DiscordOauth = () => import("@/views/DiscordOauth");
-const GuildView = () => import("@/views/GuildView");
 const Error404 = () => import("@/views/Error404");
 const Commands = () => import("@/views/Commands");
 const Leaderboard = () => import("@/views/Leaderboard");
+const DashHome = () => import("@/views/dash/DashHome");
+const DashLogs = () => import("@/views/dash/DashLogs");
+const DashMusic = () => import("@/views/dash/DashMusic");
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -23,6 +26,21 @@ const routes = [
 		component: Dashboard,
 	},
 	{
+		path: "/dashboard/home",
+		name: "DashHome",
+		component: DashHome,
+	},
+	{
+		path: "/dashboard/logs",
+		name: "DashLogs",
+		component: DashLogs,
+	},
+	{
+		path: "/dashboard/music",
+		name: "DashMusic",
+		component: DashMusic,
+	},
+	{
 		path: "/documentation",
 		name: "Documentation",
 		component: Documentation,
@@ -34,8 +52,8 @@ const routes = [
 	},
 	{
 		path: "/guild",
-		name: "Guild",
-		component: GuildView,
+		name: "Dashboard",
+		component: Dashboard,
 	},
 	{
 		path: "/commands",
