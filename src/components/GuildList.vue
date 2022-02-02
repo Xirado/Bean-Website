@@ -1,6 +1,6 @@
 <template>
-	<div class="mx-auto my-10 flex flex-col space-y-6">
-		<div :v-for="(guild, index) in guilds">
+	<div class="mx-auto my-10 flex flex-col space-y-6" v-if="guilds && Object.keys(guilds).length > 0">
+		<template v-for="guild in guilds">
 			<router-link
 				:key="guild.id"
 				:to="guild.bot_joined ? open(guild.id) : invite(guild.id)"
@@ -35,10 +35,9 @@
 						</button>
 					</a>
 
-					<div v-if="index < guilds.length - 1" :key="index"></div>
 				</div>
 			</router-link>
-		</div>
+		</template>
 	</div>
 </template>
 
@@ -54,6 +53,9 @@ export default {
 			type: String,
 			required: true,
 		},
+	},
+	async mounted() {
+		console.log(this.guilds.length)
 	},
 	methods: {
 		truncate(name) {

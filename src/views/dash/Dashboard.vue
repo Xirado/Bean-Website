@@ -46,7 +46,7 @@
 				<span class="hidden sm:block">Loading</span>
 			</div>
 			<div
-				v-if="Object.keys(guilds).length === 0 && !error && !loading"
+				v-if="guilds && Object.keys(guilds).length === 0 && !error && !loading"
 				class="mx-auto my-auto mt-10 flex flex-col rounded-lg bg-indigo-600 bg-opacity-20 p-6 text-xl font-semibold"
 			>
 				You don't have the Administrator permission in any guilds
@@ -61,7 +61,7 @@
 					</router-link>
 				</div>
 			</div>
-			<div v-if="!error && !loading && Object.keys(guilds).length > 0">
+			<div v-if="guilds && !error && !loading && Object.keys(guilds).length > 0">
 				<GuildList :guilds="guilds" :baseInviteUrl="base_invite_url" />
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 
 <script>
 import EventBus from "@/events/event-bus.js";
-import { backend_url, logout, fetchLoginURL } from "@/api/api.js";
+import { backend_url, logout } from "@/api/api.js";
 import axios from "axios";
 import GuildList from "../../components/GuildList.vue";
 import Wrapper from "@/components/Wrapper.vue";
@@ -89,14 +89,11 @@ export default {
 		};
 	},
 	async mounted() {
-		const loginLink = await fetchLoginURL();
-		this.error = false;
+		console.log('mounted')
 		EventBus.$on("LoginEvent", (value) => {
-			if (!this.loggedIn && !(process.env.NODE_ENV === "development")) {
-				this.$router.push(loginLink);
-			}
 			this.loggedIn = value;
 		});
+		console.log('Logged in')
 		if (localStorage.getItem("token") != null) {
 			try {
 				this.loggedIn = true;
@@ -126,6 +123,7 @@ export default {
 					return;
 				}
 				this.guilds = response.data.guilds;
+				console.log(`${this.guilds.length} guilds`)
 				this.base_invite_url = response.data.base_invite_url;
 				this.loading = false;
 			} catch (error) {
@@ -142,7 +140,7 @@ export default {
 				}
 				console.log(this.error_message);
 				this.loading = false;
-				return;
+				throw error
 			}
 		} else {
 			this.loading = false;
