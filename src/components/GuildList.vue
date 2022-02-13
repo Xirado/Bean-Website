@@ -9,21 +9,21 @@
 					<div
 						class="group flex w-[30rem] cursor-pointer items-center justify-between rounded-md bg-black/30 p-4 text-2xl tracking-wide shadow-lg transition duration-200 hover:bg-black/50 hover:shadow-xl"
 					>
-						<div class="flex max-w-[18rem] items-center space-x-4"><img
-							v-if="guild.icon"
-							:src="guild.icon"
-							alt="Guild Icon"
-							class="h-16 w-16 rounded-full"
-						/>
-						<div
-							v-if="!guild.icon"
-							class="grid h-16 w-16 place-items-center rounded-full bg-indigo-600"
-						>
-							<span class="text-lg font-medium">{{ guild.initials }}</span>
+						<div class="flex max-w-[18rem] items-center space-x-4">
+							<img
+								v-if="guild.icon"
+								:src="guild.icon"
+								alt="Guild Icon"
+								class="h-16 w-16 rounded-full"
+							/>
+							<div
+								v-if="!guild.icon"
+								class="grid h-16 w-16 place-items-center rounded-full bg-indigo-600"
+							>
+								<span class="text-lg font-medium">{{ guild.initials }}</span>
+							</div>
+							<h3 class="truncate">{{ truncate(guild.name) }}</h3>
 						</div>
-						<h3 class="truncate">{{ truncate(guild.name) }}</h3>
-						</div>
-						
 
 						<a v-if="guild.bot_joined" class="">
 							<button
