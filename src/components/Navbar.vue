@@ -74,13 +74,13 @@
 					/>
 				</a>
 
-				<button
+				<a
 					v-if="!loggedIn"
 					class="w-full rounded border border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20 sm:block md:w-auto"
-					:to="login_link"
+					:href="login_link"
 				>
 					<span>Login</span>
-				</button>
+				</a>
 				<button
 					v-if="user !== null && loggedIn"
 					@click="drawer = !drawer"
