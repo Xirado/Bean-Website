@@ -1,13 +1,13 @@
 <template>
 	<div
-		class="my-10 flex flex-col justify-center space-y-6"
+		class="my-10 mx-2 flex flex-col justify-center space-y-6 overflow-x-hidden"
 		v-if="guilds && Object.keys(guilds).length > 0"
 	>
 		<template v-for="guild in guilds">
-			<div :key="guild.id" class="mx-auto">
+			<div :key="guild.id" class="sm:mx-auto">
 				<router-link :to="guild.bot_joined ? open(guild.id) : invite(guild.id)">
 					<div
-						class="group flex w-[30rem] cursor-pointer items-center justify-between rounded-md bg-black/30 p-4 text-2xl tracking-wide shadow-lg transition duration-200 hover:bg-black/50 hover:shadow-xl"
+						class="group flex w-full cursor-pointer items-center justify-between rounded-md bg-black/30 p-4 text-2xl tracking-wide shadow-lg transition duration-200 hover:bg-black/50 hover:shadow-xl sm:w-[30rem]"
 					>
 						<div class="flex max-w-[18rem] items-center space-x-4">
 							<img
@@ -22,19 +22,22 @@
 							>
 								<span class="text-lg font-medium">{{ guild.initials }}</span>
 							</div>
-							<h3 class="truncate">{{ truncate(guild.name) }}</h3>
+							<h3 class="hidden truncate sm:block">
+								{{ truncate(guild.name) }}
+							</h3>
+							<h3 class="sm:hidden">{{ truncate(guild.initials, 4) }}</h3>
 						</div>
 
 						<a v-if="guild.bot_joined" class="">
 							<button
-								class="btn ml-8 rounded bg-green-600 px-4 py-2 text-lg font-medium transition duration-200 group-hover:bg-green-500"
+								class="btn rounded bg-green-600 px-4 py-2 text-lg font-medium transition duration-200 group-hover:bg-green-500"
 							>
 								Dashboard
 							</button>
 						</a>
 						<a v-else>
 							<button
-								class="btn ml-8 rounded bg-indigo-600 px-4 py-2 text-lg font-medium transition duration-200 group-hover:bg-indigo-500"
+								class="btn rounded bg-indigo-600 px-4 py-2 text-lg font-medium transition duration-200 group-hover:bg-indigo-500"
 							>
 								Setup
 							</button>
@@ -63,9 +66,13 @@ export default {
 		console.log(this.guilds.length);
 	},
 	methods: {
-		truncate(name) {
+		truncate(name, int) {
 			let string = String(name);
-			if (string.length > 41) {
+			if (int) {
+				if (string.length > int + 1) {
+					return string.substring(0, int);
+				}
+			} else if (string.length > 41) {
 				return string.substring(0, 41) + "...";
 			}
 			return string;

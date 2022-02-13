@@ -9,3 +9,26 @@
 .bg-grid {
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23f1f5f9'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
 }
+
+@media (min-width: 768px) {
+	/* width */
+	::-webkit-scrollbar {
+		width: 0.8rem;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #0e0e10;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #2f2f32;
+		border-radius: 9999px;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #464649;
+	}
+}

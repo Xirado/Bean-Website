@@ -62,17 +62,12 @@
 						class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 					/>
 				</a>
-				<a
-					:href="invite_link"
-					target="_blank"
-					color="indigo"
-					class="group mb-2 p-1 font-medium"
-				>
+				<router-link to="/dashboard" class="group mb-2 p-1 font-medium">
 					<span>{{ loggedIn ? "Manage servers" : "Add to Server" }}</span>
 					<hr
 						class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 					/>
-				</a>
+				</router-link>
 
 				<a
 					v-if="!loggedIn"
@@ -84,17 +79,17 @@
 				<button
 					v-if="user !== null && loggedIn"
 					@click="drawer = !drawer"
-					class="btn h-10 w-10 rounded-full ring ring-indigo-600 ring-opacity-0 transition hover:ring-opacity-40 focus:ring-opacity-100"
+					class="btn hidden h-10 w-10 rounded-full ring ring-indigo-600 ring-opacity-0 transition hover:ring-opacity-40 focus:ring-opacity-100 sm:block"
 				>
 					<img :src="user.effective_avatar" class="rounded-full" />
 				</button>
 				<div
-					v-if="drawer"
-					class="absolute right-4 top-20 rounded-md bg-zinc-800 p-6"
+					:class="{ 'sm:hidden': drawer }"
+					class="right-4 top-20 rounded-md sm:absolute sm:bg-zinc-800 sm:p-6 sm:shadow"
 				>
 					<img
 						:src="user.effective_avatar"
-						class="mx-auto mb-3 h-10 w-10 rounded-full"
+						class="mx-auto mb-3 hidden h-10 w-10 rounded-full sm:block"
 					/>
 					<h3 class="text-xl font-medium tracking-wide">
 						{{ user.username
@@ -158,6 +153,7 @@ export default {
 	},
 	methods: {
 		logout() {
+			this.drawer = false;
 			logout();
 			console.log("Logged out!");
 			this.loggedIn = false;
