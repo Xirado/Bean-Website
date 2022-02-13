@@ -48,7 +48,9 @@
 					</div>
 				</form>
 			</div>
-			<button class="btn mt-4 inline-flex rounded bg-indigo-700 px-4 py-1 font-medium ">
+			<button
+				class="btn mt-4 inline-flex rounded bg-indigo-700 px-4 py-1 font-medium"
+			>
 				Save
 			</button>
 		</DashWrapper>

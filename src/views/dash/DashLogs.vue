@@ -1,6 +1,9 @@
 <template>
 	<div>
-		<DashWrapper title="Logging" :numb="2"><div class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide">
+		<DashWrapper title="Logging" :numb="2"
+			><div
+				class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide"
+			>
 				<h3 class="text-lg">Leveling</h3>
 				<form class="mt-4">
 					<div class="flex items-center">
@@ -47,9 +50,12 @@
 					</div>
 				</form>
 			</div>
-			<button class="btn mt-4 inline-flex rounded bg-indigo-700 px-4 py-1 font-medium ">
+			<button
+				class="btn mt-4 inline-flex rounded bg-indigo-700 px-4 py-1 font-medium"
+			>
 				Save
-			</button></DashWrapper>
+			</button></DashWrapper
+		>
 	</div>
 </template>
 

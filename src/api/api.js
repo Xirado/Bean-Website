@@ -3,7 +3,9 @@ import EventBus from "@/events/event-bus.js";
 var json_bigint = require("json-bigint");
 
 export const backend_url =
-	process.env.NODE_ENV === 'development' ? 'http://localhost:8887' : "https://api.bean.bz";
+	process.env.NODE_ENV === "development"
+		? "http://localhost:8887"
+		: "https://api.bean.bz";
 
 export async function generateToken(code) {
 	const config = {

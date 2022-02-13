@@ -61,7 +61,9 @@
 					</router-link>
 				</div>
 			</div>
-			<div v-if="guilds && !error && !loading && Object.keys(guilds).length > 0">
+			<div
+				v-if="guilds && !error && !loading && Object.keys(guilds).length > 0"
+			>
 				<GuildList :guilds="guilds" :baseInviteUrl="base_invite_url" />
 			</div>
 		</div>
@@ -89,11 +91,11 @@ export default {
 		};
 	},
 	async mounted() {
-		console.log('mounted')
+		console.log("mounted");
 		EventBus.$on("LoginEvent", (value) => {
 			this.loggedIn = value;
 		});
-		console.log('Logged in')
+		console.log("Logged in");
 		if (localStorage.getItem("token") != null) {
 			try {
 				this.loggedIn = true;
@@ -123,7 +125,7 @@ export default {
 					return;
 				}
 				this.guilds = response.data.guilds;
-				console.log(`${this.guilds.length} guilds`)
+				console.log(`${this.guilds.length} guilds`);
 				this.base_invite_url = response.data.base_invite_url;
 				this.loading = false;
 			} catch (error) {
@@ -140,7 +142,7 @@ export default {
 				}
 				console.log(this.error_message);
 				this.loading = false;
-				throw error
+				throw error;
 			}
 		} else {
 			this.loading = false;

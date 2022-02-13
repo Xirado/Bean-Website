@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<DashWrapper title="Music" :numb="3"> <div class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide">
+		<DashWrapper title="Music" :numb="3">
+			<div class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide">
 				<h3 class="text-lg">Leveling</h3>
 				<form class="mt-4">
 					<div class="flex items-center">
@@ -49,7 +50,8 @@
 			</div>
 			<div class="mt-4 inline-flex rounded bg-indigo-700 px-4 py-1 font-medium">
 				Save
-			</div> </DashWrapper>
+			</div>
+		</DashWrapper>
 	</div>
 </template>
 
