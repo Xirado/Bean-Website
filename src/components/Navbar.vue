@@ -1,6 +1,6 @@
 <template>
 	<nav
-		class="top-0 z-30 w-full bg-zinc-900 bg-opacity-60 px-1 py-1 text-gray-100 backdrop-blur backdrop-filter"
+		class="top-0 z-30 w-full bg-zinc-900 bg-opacity-60 px-1 py-1 text-gray-100 backdrop-blur backdrop-filter h-[4.4rem]"
 		v-bind:class="{ fixed: navfixed, sticky: !navfixed }"
 	>
 		<div
@@ -9,6 +9,7 @@
 				'divide-y divide-zinc-700 divide-opacity-40 md:divide-y-0': navOpen,
 			}"
 		>
+		<!--Section 1-->
 			<div class="flex w-full items-center justify-between">
 				<router-link to="/" custom>
 					<img src="/img/bean.jpg" class="w-16" />
@@ -47,7 +48,7 @@
 					</svg>
 				</div>
 			</div>
-
+<!--Section 2-->
 			<div
 				class="flex w-full flex-col items-center justify-center md:flex-auto md:flex-row md:justify-end md:space-y-0 md:space-x-7"
 				:class="navOpen ? '' : 'hidden md:flex'"
@@ -68,9 +69,9 @@
 						class="scale-0 border-t-2 border-indigo-600 transition duration-300 group-hover:scale-100"
 					/>
 				</router-link>
-
+<!--Section 3-->
 				<a
-					v-if="!loggedIn"
+					v-if="!loggedIn && login_link"
 					class="w-full rounded border border-white/10 bg-indigo-300 bg-opacity-[0.15] px-4 py-2 font-semibold transition duration-300 hover:bg-indigo-600 hover:bg-opacity-20 sm:block md:w-auto"
 					:href="login_link"
 				>
@@ -83,20 +84,25 @@
 				>
 					<img :src="user.effective_avatar" class="rounded-full" />
 				</button>
+				<!--Section 4-->
 				<div
 					:class="{ 'sm:hidden': !drawer }"
 					class="right-4 top-20 rounded-md sm:absolute sm:bg-zinc-800 sm:p-6 sm:shadow"
 				>
-					<img
+					<div v-if="loggedIn == true"><img
+					v-if="user.effective_avatar"
 						:src="user.effective_avatar"
 						class="mx-auto mb-3 hidden h-10 w-10 rounded-full sm:block"
 					/>
-					<h3 class="text-xl font-medium tracking-wide">
+					<h3 class="text-xl font-medium tracking-wide" v-if="user.username && user.discriminator">
 						{{ user.username
 						}}<span class="ml-1 tracking-widest text-gray-400"
 							>#{{ user.discriminator }}</span
 						>
-					</h3>
+					</h3></div>
+					
+					
+					<!--Section 5-->
 					<hr
 						class="mx-10 mt-2 border-t-2 border-indigo-300 border-opacity-25"
 					/>
