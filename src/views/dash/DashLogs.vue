@@ -51,10 +51,258 @@
 				</form>
 			</div>
 			<button
-				class="btn mt-4 inline-flex rounded bg-indigo-700 px-4 py-1 font-medium"
+				class="btn mt-4 mb-[300rem] inline-flex rounded bg-indigo-700 px-4 py-1 font-medium"
 			>
 				Save
-			</button></DashWrapper
+			</button>
+			
+			
+			<div
+				class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide"
+			>
+				<h3 class="text-lg">Leveling</h3>
+				<form class="mt-4">
+					<div class="flex items-center">
+						<input type="checkbox" name="1" class="mr-2 rounded-full" />
+						<label for="1">Enable Logging</label>
+					</div>
+				</form>
+				<h3 class="mt-4 text-base">Logging Channel</h3>
+				<form
+					class="mt-2 max-h-48 max-w-sm space-y-3 overflow-y-auto rounded bg-black/20 p-3"
+				>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#announcements</label>
+					</div>
+
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#general</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#movie-night</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+				</form>
+			</div>
+			<div
+				class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide"
+			>
+				<h3 class="text-lg">Leveling</h3>
+				<form class="mt-4">
+					<div class="flex items-center">
+						<input type="checkbox" name="1" class="mr-2 rounded-full" />
+						<label for="1">Enable Logging</label>
+					</div>
+				</form>
+				<h3 class="mt-4 text-base">Logging Channel</h3>
+				<form
+					class="mt-2 max-h-48 max-w-sm space-y-3 overflow-y-auto rounded bg-black/20 p-3"
+				>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#announcements</label>
+					</div>
+
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#general</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#movie-night</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+				</form>
+			</div>
+			<div
+				class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide"
+			>
+				<h3 class="text-lg">Leveling</h3>
+				<form class="mt-4">
+					<div class="flex items-center">
+						<input type="checkbox" name="1" class="mr-2 rounded-full" />
+						<label for="1">Enable Logging</label>
+					</div>
+				</form>
+				<h3 class="mt-4 text-base">Logging Channel</h3>
+				<form
+					class="mt-2 max-h-48 max-w-sm space-y-3 overflow-y-auto rounded bg-black/20 p-3"
+				>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#announcements</label>
+					</div>
+
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#general</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#movie-night</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+				</form>
+			</div>
+			<div
+				class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide"
+			>
+				<h3 class="text-lg">Leveling</h3>
+				<form class="mt-4">
+					<div class="flex items-center">
+						<input type="checkbox" name="1" class="mr-2 rounded-full" />
+						<label for="1">Enable Logging</label>
+					</div>
+				</form>
+				<h3 class="mt-4 text-base">Logging Channel</h3>
+				<form
+					class="mt-2 max-h-48 max-w-sm space-y-3 overflow-y-auto rounded bg-black/20 p-3"
+				>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#announcements</label>
+					</div>
+
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#general</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#movie-night</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+				</form>
+			</div>
+			<div
+				class="rounded-md bg-black/30 p-4 text-sm font-medium tracking-wide"
+			>
+				<h3 class="text-lg">Leveling</h3>
+				<form class="mt-4">
+					<div class="flex items-center">
+						<input type="checkbox" name="1" class="mr-2 rounded-full" />
+						<label for="1">Enable Logging</label>
+					</div>
+				</form>
+				<h3 class="mt-4 text-base">Logging Channel</h3>
+				<form
+					class="mt-2 max-h-48 max-w-sm space-y-3 overflow-y-auto rounded bg-black/20 p-3"
+				>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#announcements</label>
+					</div>
+
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#general</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">#movie-night</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+					<div class="flex items-center">
+						<input type="radio" name="1" class="mr-2 rounded-full" />
+						<label for="1">etc.</label>
+					</div>
+				</form>
+			</div>
+			</DashWrapper
 		>
 	</div>
 </template>

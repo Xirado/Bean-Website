@@ -871,6 +871,18 @@ select {
   margin-bottom: 7rem;
 }
 
+.mb-\[\] {
+  margin-bottom: ;
+}
+
+.mb-\[30\] {
+  margin-bottom: 30;
+}
+
+.mb-\[300rem\] {
+  margin-bottom: 300rem;
+}
+
 .flex {
   display: flex;
 }
@@ -953,6 +965,30 @@ select {
 
 .h-20 {
   height: 5rem;
+}
+
+.h-\[calc\] {
+  height: calc;
+}
+
+.h-\[calc\(\)\] {
+  height: calc();
+}
+
+.h-\[calc\(90vh\)\] {
+  height: calc(90vh);
+}
+
+.h-\[90vh\] {
+  height: 90vh;
+}
+
+.h-\[9\] {
+  height: 9;
+}
+
+.h-\[93vh\] {
+  height: 93vh;
 }
 
 .max-h-36 {
@@ -1212,6 +1248,10 @@ select {
 
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 
 .truncate {
@@ -2136,6 +2176,16 @@ select {
     margin-bottom: 2rem;
   }
 
+  .sm\:mr-2 {
+    margin-right: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .sm\:sm\:mr-2 {
+      margin-right: 0.5rem;
+    }
+  }
+
   .sm\:block {
     display: block;
   }
@@ -2150,6 +2200,10 @@ select {
 
   .sm\:w-full {
     width: 100%;
+  }
+
+  .sm\:w-96 {
+    width: 24rem;
   }
 
   .sm\:flex-row {
@@ -2191,6 +2245,16 @@ select {
 
   .sm\:p-0 {
     padding: 0px;
+  }
+
+  .sm\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .sm\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .sm\:text-left {

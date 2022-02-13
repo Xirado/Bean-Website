@@ -84,7 +84,7 @@
 					<img :src="user.effective_avatar" class="rounded-full" />
 				</button>
 				<div
-					:class="{ 'sm:hidden': drawer }"
+					:class="{ 'sm:hidden': !drawer }"
 					class="right-4 top-20 rounded-md sm:absolute sm:bg-zinc-800 sm:p-6 sm:shadow"
 				>
 					<img
