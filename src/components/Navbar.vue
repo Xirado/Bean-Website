@@ -6,6 +6,9 @@
           <v-img src="/img/bean.png" max-width="50"></v-img>
         </v-toolbar-title>
         <v-spacer></v-spacer>
+        <v-btn v-if="!isSmall" text href="/privacy-policy">
+            <span>Privacy</span>
+        </v-btn>
         <v-btn v-if="!isSmall" text href="https://discord.gg/7WEjttJtKa" target="_blank" >
             <span>Support</span>
         </v-btn>
@@ -25,6 +28,10 @@
         <v-card>
           <v-list-item-content class="justify-center">
             <div class="mx-auto text-center">
+                <v-btn text color="white" href="/privacy-policy">
+                  <span>Privacy</span>
+                </v-btn>
+                <v-spacer></v-spacer>
                 <v-btn text color="white" href="https://discord.gg/7WEjttJtKa" target="_blank">
                   <span>Support</span>
                 </v-btn>

@@ -9,6 +9,7 @@ const GuildView = () => import('@/views/GuildView')
 const Error404 = () => import('@/views/Error404')
 const Commands = () => import('@/views/Commands')
 const Leaderboard = () => import('@/views/Leaderboard')
+const Privacy = () => import('@/views/PrivacyPolicy.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -46,6 +47,11 @@ const routes = [
     path: '/leaderboard',
     name: 'Leaderboard',
     component: Leaderboard
+  },
+  {
+    path: '/privacy-policy',
+    name: 'Privacy Policy',
+    component: Privacy
   },
   {
     path: '*',
