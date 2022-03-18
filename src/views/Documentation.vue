@@ -1,16 +1,19 @@
 <template>
-    <div>
-        <ErrorMessage title="Documentation" message="Documentation can be found on the Github!"/>
-    </div>
+	<div>
+		<ErrorMessage
+			title="Documentation"
+			message="Documentation can be found on the Github!"
+		/>
+	</div>
 </template>
 
 <script>
-import ErrorMessage from '@/components/ErrorMessage'
+import ErrorMessage from "@/components/ErrorMessage";
 
 export default {
-   name: 'Dashboard',
-   components: {
-       ErrorMessage
-   }
-}
+	name: "Dashboard",
+	components: {
+		ErrorMessage,
+	},
+};
 </script>
