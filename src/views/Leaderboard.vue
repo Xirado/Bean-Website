@@ -74,9 +74,3 @@ export default {
     }
 }
 </script>
-
-<style>
-img {
-
-}
-</style>
