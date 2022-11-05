@@ -12,7 +12,7 @@
         </div>
         <v-row v-if="guild" align="center mx-4 my-6 pb-10">
             <v-avatar size="128">
-                <img v-if="guild.icon" :src="guild.icon">
+                <img v-if="guild.icon" :src="guild.icon" alt="Guild Icon">
             </v-avatar>
             <span class="mx-8 my-12" style="font-size: 200%; font-weight: bold;">
                 {{ guild.name }}
@@ -74,3 +74,9 @@ export default {
     }
 }
 </script>
+
+<style>
+img {
+
+}
+</style>
