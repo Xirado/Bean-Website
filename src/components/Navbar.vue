@@ -9,7 +9,7 @@
         <v-btn v-if="!isSmall" text href="/privacy-policy">
             <span>Privacy</span>
         </v-btn>
-        <v-btn v-if="!isSmall" text href="https://discord.gg/7WEjttJtKa" target="_blank" >
+        <v-btn v-if="!isSmall" text href="https://discord.gg/JQ9JCk4Hsn" target="_blank" >
             <span>Support</span>
         </v-btn>
         <v-btn v-if="!isSmall" text href="https://github.com/Xirado/Bean" target="_blank">
