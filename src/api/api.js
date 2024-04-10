@@ -5,16 +5,14 @@ var json_bigint = require('json-bigint')
 export const backend_url = process.env.NODE_ENV === 'development' ? 'http://localhost:8887' : 'https://api.bean.bz'
 
 export async function generateToken(code) {
-    const config = {
-        headers: {
-            authorization: `AuthCode ${code}`
-        }
+    const body = {
+        "code": code
     }
-    const response = await axios.get(`${backend_url}/token`, config)
-    let token = response.headers.authorization
-    token = token.substring(5)
+
+    const response = await axios.post(`${backend_url}/callback/discord`, body)
+    const token = response.data.token
     window.localStorage.setItem('token', token)
-    window.localStorage.setItem('user', json_bigint.stringify(response.data))
+    window.localStorage.setItem('user', json_bigint.stringify(response.data.user))
     window.localStorage.setItem('last_login', Date.now()/1000)
     return token
 }
@@ -30,8 +28,37 @@ export async function fetchLoginURL() {
 }
 
 export async function fetchLeaderboard(guild_id) {
-    const response = await axios.get(`${backend_url}/guilds/${guild_id}/levels`)
+    let config = {};
+
+    const token = localStorage.getItem("token")
+
+    if (token) {
+        config.headers = {
+            authorization: `Bearer ${token}`,
+        };
+    }
+    
+    const response = await axios.get(`${backend_url}/leaderboard/${guild_id}`, config)
     return response.data
+}
+
+export async function deleteRankedMember(user, guild) {
+    const token = localStorage.getItem("token")
+
+    if (!token) {
+        throw new Error("Not logged in")
+    }
+
+    const config = {
+        headers: {
+            authorization: `Bearer ${token}`,
+        }
+    }
+
+    const guildId = guild.id
+    const userId = user.id
+
+    await axios.delete(`${backend_url}/leaderboard/${guildId}/members/${userId}`, config)
 }
 
 export async function fetchInviteURL() {

@@ -10,16 +10,16 @@
                 {{ error_message }}
             </v-alert>
         </div>
-        <v-row v-if="guild" align="center mx-4 my-6 pb-10">
-            <v-avatar size="128">
-                <img v-if="guild.icon" :src="guild.icon" alt="Guild Icon">
+        <v-row v-if="guild" class="align-center mx-4 my-3 pb-1">
+            <v-avatar size="80">
+                <img v-if="guild.iconUrl" :src="guild.iconUrl" alt="Guild Icon">
             </v-avatar>
             <span class="mx-8 my-12" style="font-size: 200%; font-weight: bold;">
                 {{ guild.name }}
             </span>
         </v-row>
         <div v-if="users">
-            <LeaderboardList :users="users"/>
+            <LeaderboardList :users="users" :guild="guild" :isAdmin="isAdmin"/>
         </div>
     </div>
 </template>
@@ -42,6 +42,7 @@ export default {
             guild_id : null,
             users : null,
             guild : null,
+            isAdmin : false,
             error : false,
             error_message : null,
             loading : false,
@@ -53,11 +54,12 @@ export default {
             this.loading = true
             this.guild_id = this.$route.query.id
             const response = await fetchLeaderboard(this.guild_id)
-            this.users = response.users.filter(x => x.xp >= 100)
+            this.users = response.members.filter(x => x.xp >= 100)
             if (this.users.length == 0) {
                 this.no_results = true
             }
             this.guild = response.guild
+            this.isAdmin = response.isAdmin
             this.items.push({text: this.guild.name, disabled: true, href: null})
             this.items.push({text: 'Leaderboard', disabled: true, href: null})
             this.loading  = false

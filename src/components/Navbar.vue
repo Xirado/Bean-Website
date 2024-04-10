@@ -56,7 +56,7 @@
         <template v-slot:activator="{ on }">
           <v-btn icon x-large v-on="on" class="mx-1">
             <v-avatar color="brown" size="48">
-              <img :src="user.effective_avatar">
+              <img :src="user.avatarUrl">
             </v-avatar>
           </v-btn>
         </template>
@@ -64,9 +64,10 @@
           <v-list-item-content class="justify-center">
             <div class="mx-auto text-center">
               <v-avatar color="brown" class="my-1">
-                <img :src="user.effective_avatar">
+                <img :src="user.avatarUrl">
               </v-avatar>
-              <h3>{{ user.username }}<span class="ml-1 grey--text">#{{ user.discriminator }}</span>
+              <h3>
+                {{ user.username }}<span v-if="user.discriminator != '0'" class="ml-1 grey--text">#{{ user.discriminator }}</span>
               </h3>
               <v-divider class="my-3"></v-divider>
               <v-btn depressed rounded text color="red" @click="logout()">
